@@ -1,0 +1,193 @@
+body{
+	background-color: salmon;
+	font-family: sans-serif;
+}
+
+.main{
+	width: 990px;
+	margin: auto;
+	background-color: white;
+}
+.jumbotron{
+	margin-top: 70px;
+}
+.jumbotron img {
+float: right;
+width: 400px;
+margin-top: -60px;
+}
+
+.jumbotron h1{
+	font-weight: bold;
+}
+
+.jumbotron a:hover{
+	background-color: #213459;
+	color: white;
+}
+
+.header2{
+	margin: auto;
+	margin-right: 0px;
+	background-color: #a6ff00;
+	color: white;
+	padding: 0px;
+		
+}
+
+.header2 h3{
+	font-weight: bold;
+	text-align: center;
+	padding-top: 30px;
+	padding-left: 30px;
+}
+
+.header2 .desk{
+	font-size: 18px;
+	padding-left: 20px;
+	text-align: center;
+	padding-top: 0px;
+
+}
+
+.header2 .jeruk{
+	width: 250px;
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+.header2 .baju{
+	padding-right: 30px;
+	padding-left: 0px;
+}
+
+.header2 .alkes{
+	padding-right: 30px;
+	padding-left: 0px;
+}
+
+.header2 .kemeja{
+	padding-right: 30px;
+	padding-left: 0px;
+}
+
+.header2 .desain{
+	text-align: left;
+	width: 200px;
+	height: 300px;
+	margin-top: 50px;
+	margin-left: 70px;
+}
+
+.header2 .desain h4{
+	text-align: left;
+	font-weight: bold;
+}
+
+.header2 .desain p{
+	font-size: 18px;
+}
+
+.header2 .upload{
+	width: 250px;
+	height: 200px;
+	border:1px solid #a6ff00;
+	margin-top: -300px;
+	margin-left: 345px;
+}
+
+.header2 .upload h4{
+	text-align: left;
+	font-weight: bold;
+}
+
+.header2 .upload p{
+	font-size: 18px;
+}
+
+.header2 .kelola{
+	width: 250px;
+	height: 200px;
+	display: block;
+	border:1px solid #a6ff00;
+	margin-top: -201px;
+	margin-left: 650px;
+	font-size: 18px;
+}
+
+.header2 .kelola h4{
+	font-weight: bold;
+}
+
+.header3{
+	width: 985px;
+	height: 400px;
+	margin: 30px auto;
+	background-color: red;
+	color: white;
+	padding-top: 40px;
+}
+
+.header3 img{
+	float: left;
+	padding-right: 0px;
+	margin-top: -10px;
+	padding-left: 20px;
+	padding-bottom: 30px;
+}
+
+.header3 h1{
+	margin: auto;
+	float: left;
+}
+
+.header3 h3{
+	text-align: left;
+	float: left;
+}
+
+.header3 ol li{
+	margin-left: 50px;
+	margin-right: 50px;
+	float: left;
+	line-height: 30px;
+	font-size: 20px;
+}
+
+.pembayaran{
+	width: 985px;
+	margin: auto;
+	background-color: #03b6fc;
+	color: white;
+	padding-top: 40px;
+	padding-left: 5px;
+}
+
+.pembayaran h3{
+	text-align: center;
+}
+
+.pembayaran img{
+	margin-left: 50px;
+}
+
+.jumbotron2{
+	height: 200px;
+	margin-top: 30px;
+	background-color: #213459;
+	color: white;
+}
+.jumbotron2 p{
+	font-weight: bold;
+	font-size: 30px;
+	padding: 30px;
+}
+
+.jumbotron2 a{
+	margin-right: 50px;
+	float: right;
+}
+
+.jumbotron2 a:hover{
+	background-color: #213459;
+}
