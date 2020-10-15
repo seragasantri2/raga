@@ -1,11 +1,7 @@
 @extends('layouts.admin')
-
-@section('style')
-<link rel="stylesheet" href="{{asset('css/admin.css')}}">  
-@endsection
 @section('content')
 
- 
+  <link rel="stylesheet" href="{{asset('css/admin.css')}}">  
 
     <div class="col-md p-5 pt-2">
     <h3><i class="fas fa-tachometer-alt"></i> DASHBOARD </h3><hr>
@@ -35,7 +31,7 @@
             </div>
             <h5 class="card-title">Jumlah User</h5>
             <div class="display-4">{{Auth::user()->count('first_name')}}</div>
-            <a href="/user"><p class="card-text text-white">Lihat Detail <i class=" fas fa-angle-double-right"></i></p></a>
+            <a href=""><p class="card-text text-white">Lihat Detail <i class=" fas fa-angle-double-right"></i></p></a>
           </div>
         </div>
 

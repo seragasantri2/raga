@@ -1,23 +1,19 @@
 @extends('layouts.admin')
 
-@section('tittle','Create Product')
-
-@section('content-header', 'Create Product')
-
 @section('content')
     
     <!-- Main content -->
     <!-- <section class="content"> -->
-      <div class="container-fluid">
+      <div class="container-fluid" style="width:80%; min-width:300px;">
         <div class="row">
           <!-- left column -->
-          <div class="col-md-12">
+          <div class="col-md-12 p-30 pt-10">
             <!-- jquery validation -->
             <div class="card card-primary">
               
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" id="quickForm" action="/product/add" method="post">
+              <form role="form" id="quickForm" action="/product/add" method="post" enctype="multipart/form-data">
               @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -39,11 +35,12 @@
                     <textarea name="deskripsi" class="form-control" cols="30" rows="5"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="">Deskripsi</label>
-                    <input type="file" class="form-control-file" id="image" name="image">
-                </div>
-
+                
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Gambar Produk</label>
+                    <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                  </div>
+                
 
                 </div>
                 <!-- /.card-body -->
@@ -58,15 +55,7 @@
             <!-- /.card -->
             </div>
           <!--/.col (left) -->
-          <!-- right column -->
-          <div class="col-md-6">
-
-          </div>
-          <!--/.col (right) -->
-        </div>
+</div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    <!-- </section> -->
-    <!-- /.content -->
-  <!-- </div> -->
+
 @endsection
