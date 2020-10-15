@@ -24,9 +24,12 @@
 
         <div class="icon ml-4">
           <h5>
-            <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Pesan Masuk" ></i>
-            <i class="fas fa-bell mr-3" data-toggle="tooltip" title="Notifikasi"></i>
-            <i class="fas fa-sign-out-alt mr-3" data-toggle="tooltip" title="Keluar"></i>
+            <a href=""><i class="fas fa-envelope mr-3 text-dark" data-toggle="tooltip" title="Pesan Masuk" ></i></a>        
+            <a href=""><i class="fas fa-bell mr-3 text-dark" data-toggle="tooltip" title="Notifikasi"></i></a>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt mr-3 text-dark" data-toggle="tooltip" title="Keluar"></i></a>
+           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+             @csrf
+            </form>
           </h5>
         </div>
       </div>
