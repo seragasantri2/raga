@@ -19,10 +19,16 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+//produk
 Route::post('/product/add','ProductController@createData')->middleware('auth');
 Route::get('/product','ProductController@index')->middleware('auth');
-Route::get('/product/create','ProductController@create')->name('create-product')->middleware();
-Route::delete('/product/delete/{id}','ProductController@delete')->name('delete-product');
+Route::get('/product/create','ProductController@create')->name('create-product')->middleware('auth');
+Route::delete('/product/delete/{id}','ProductController@delete')->name('delete-product')->middleware('auth');
 
-    // Users
-    Route::get('/user','UserController@index')->name('user')->middleware('auth');
+//jadwal
+Route::get('/jadwal','ProductController@jadwal')->middleware('auth');
+
+// Users
+Route::get('/user','UserController@index')->name('user')->middleware('auth');
+Route::get('/daftaradmin','UserController@admin')->middleware('auth');

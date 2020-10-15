@@ -37,4 +37,9 @@ class ProductController extends Controller
         return back();
 
     }
+
+    public function jadwal()
+    {
+        return view('product.jadwal');
+    }
 }

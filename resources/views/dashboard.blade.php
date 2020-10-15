@@ -17,7 +17,7 @@
             
             <h5 class="card-title">Jumlah Produk</h5>
             <div class="display-4">{{$produk->count('nama')}}</div>
-            <a href=""><p class="card-text text-white">Lihat Detail <i class=" fas fa-angle-double-right"></i></p></a>
+            <a href="/product"><p class="card-text text-white">Lihat Detail <i class=" fas fa-angle-double-right"></i></p></a>
           </div>
           
         </div>
@@ -31,7 +31,7 @@
             </div>
             <h5 class="card-title">Jumlah User</h5>
             <div class="display-4">{{Auth::user()->count('first_name')}}</div>
-            <a href=""><p class="card-text text-white">Lihat Detail <i class=" fas fa-angle-double-right"></i></p></a>
+            <a href="/user"><p class="card-text text-white">Lihat Detail <i class=" fas fa-angle-double-right"></i></p></a>
           </div>
         </div>
 
