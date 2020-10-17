@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css')}}">
     <script src="https://kit.fontawesome.com/a1bc18a4b6.js" crossorigin="anonymous"></script>
 
     <title>Back-end</title>
@@ -39,17 +39,17 @@
       <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
         <ul class="nav flex-column ml-3 mb-5">
         <li class="nav-item">
-          <a class="nav-link active text-white" href="/home"> <i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a><hr class="bg-secondary">
+          <a class="nav-link active text-white" href="/users"> <i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a><hr class="bg-secondary">
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/product"> <i class="fas fa-book-open mr-2"></i> Daftar Produk</a><hr class="bg-secondary">
+          <a class="nav-link text-white" href="/product-user"> <i class="fas fa-book-open mr-2"></i> Daftar Produk</a><hr class="bg-secondary">
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/user"><i class="fas fa-user mr-2"></i> Daftar User</a><hr class="bg-secondary">
+          <a class="nav-link text-white" href="/keranjang"><i class="fas fa-user mr-2"></i> Keranjang </a><hr class="bg-secondary">
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link text-white" href="/daftaradmin"> <i class="fas fa-user mr-2"></i> Daftar Admin</a><hr class="bg-secondary">
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link text-white" href="/jadwal"> <i class="fas fa-calendar-alt mr-2"></i> Jadwal Promo</a><hr class="bg-secondary">
         </li>
@@ -62,7 +62,7 @@
         
       </div>
       @yield('content')
-      </div>
+    
     
 
     <!-- Optional JavaScript -->
