@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -32,13 +33,13 @@ class RegisterController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     public function redirectTo()
     {
-        $role = Auth::user()->role;
+        $role = Auth::user()->role_id;
 
         switch($role) {
-            case 'admin':
+            case '1':
                 return '/home';
             break;
-            case 'user':
+            case '2':
                 return '/users';
             break;
         }
@@ -87,7 +88,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'alamat'    => $data['alamat'],
-            'role'  =>  'user'
+            'role_id'  =>  '2'
         ]);
     }
 }

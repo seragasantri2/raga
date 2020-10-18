@@ -13,13 +13,14 @@ class UserController extends Controller
     
     public function index()
     {
-        $user = User::all();
-        return view('user', compact('user'));
+        $users = User::where('role_id','=','2')->get();
+        return view('user', compact('users'));
     }
 
     public function admin()
     {
-        return view('daftaradmin');
+        $admin = User::where('role_id','=','1')->get();
+        return view('daftaradmin', compact('admin'));
     }
     
 }

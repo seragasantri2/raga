@@ -16,12 +16,12 @@
         </tr>
     </thead> 
     <tbody> 
-    @foreach ($user as $u)
+ @foreach($users as $user)
         <tr>
             <th scope="row">{{$loop->iteration}}</th>
-            <td>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</td>
-            <td>{{Auth::user()->email}}</td>
-            <td>{{Auth::user()->no_telpon}}</td>
+            <td>{{$user->first_name}} {{$user->last_name}}</td>
+            <td>{{$user->email}}</td>
+            <td>{{$user->no_telpon}}</td>
             <td class="icon ml-auto">
             <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
             </td>
@@ -34,7 +34,7 @@
              
             </td>
         </tr>
-    @endforeach
+ @endforeach
     </tbody>
     </table>
 

@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'password'      =>  Hash::make('admin'),
             'alamat'        =>  'Indonesia',
             'no_telpon'     =>  '0813',
-            'role'          =>  'admin'
+            'role_id'          =>  '1'
         ]);
 
         DB::table('users')->insert([
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'password'      =>  Hash::make('user'),
             'alamat'        =>  'Indonesia',
             'no_telpon'     =>  '0813',
-            'role'          =>  'user' 
+            'role_id'          =>  '2' 
         ]);
     }
 }

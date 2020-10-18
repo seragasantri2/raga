@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'role','first_name', 'last_name','no_telpon', 'email','alamat', 'password'
+        'role_id','first_name', 'last_name','no_telpon', 'email','alamat', 'password'
     ];
 
  
@@ -48,5 +48,10 @@ class User extends Authenticatable
     public function getAvatar()
     {
         return 'https://www.gravatar.com/avatar/'.md5($this->email);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo('App/Models/Role');
     }
 }
