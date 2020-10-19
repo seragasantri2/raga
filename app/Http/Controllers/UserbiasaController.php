@@ -11,8 +11,9 @@ class UserbiasaController extends Controller
     {
         $this->middleware(['auth','user']);
     }
-    public function index(request $request)
+    public function index(request $request, $id=null)
     {
-        return view('user');
+        $products = Product::all();
+        return view('user', compact('products','id'));
     }
 }
