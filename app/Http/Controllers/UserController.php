@@ -13,14 +13,25 @@ class UserController extends Controller
     
     public function index()
     {
-        $users = User::where('role_id','=','2')->get();
-        return view('user', compact('users'));
+        $users = User::where('role_id','=','3')->get();
+        return view('admin.daftaruser', compact('users'));
     }
 
     public function admin()
     {
         $admin = User::where('role_id','=','1')->get();
-        return view('daftaradmin', compact('admin'));
+        return view('admin.daftaradmin', compact('admin'));
+    }
+
+    public function reseller()
+    {
+        $reseller = User::where('role_id','=','2')->get();
+        return view('admin.daftarreseller', compact('reseller'));
+    }
+    
+    public function artikel()
+    {
+        return view('admin.artikel');
     }
     
 }

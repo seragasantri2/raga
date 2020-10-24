@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700");
+
+@font-face {
+  font-family: "Helvetica-Neue";
+  src: url("../storage/font/HelveticaNeue-Thin.otf");
+}
+
+
+
+
+
+hr {
+  margin: 0;
+  border: 1px solid #ff4f77;
+  background: #ff4f77;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 100px;
+}
+
+.kartu {
+  margin-top: 30px;
+  border: 0.5px solid grey;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.btn {
+  margin-top: 15px;
+}

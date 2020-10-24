@@ -37,6 +37,9 @@ class LoginController extends Controller
                 return '/home';
             break;
             case '2':
+                return '/reseller';
+            break;
+            case '3':
                 return '/users';
             break;
         }

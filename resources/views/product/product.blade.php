@@ -6,6 +6,7 @@
 <div class="col-md p-5 pt-2">
     <h3><i class="fas fa-book-open mr-2"></i> DAFTAR PRODUK</h3><hr>
     <a href="{{route('create-product')}}" class="btn btn-primary mb-3" ><i class="fas fa-plus-square mr-2"> Tambah Produk</i></a>
+    <a href="{{route('create-product')}}" class="btn btn-primary mb-3" ><i class="fas fa-plus-square mr-2"> Tambah Kategori</i></a>
 
     <table class="table table-striped table-bordered">
     <thead>

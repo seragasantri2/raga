@@ -42,7 +42,7 @@ class HomeController extends Controller
                         'admin'  => $admin,   
                     );                   
         $products = Product::where('nama','LIKE','%'.$request->search.'%')->paginate(1);
-        return view('dashboard',  compact('products'),$data);
+        return view('admin.dashboard',  compact('products'),$data);
         // dd($users);
         
     }

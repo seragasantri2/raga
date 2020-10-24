@@ -29,7 +29,17 @@
                     <label for="">stok</label>
                     <input type="number" name="stok" class="form-control" >
                   </div>
-                
+                  <div class="form-group">
+                    <label for="">stok</label>
+                    <select name="category_id" class="form-control">
+                      <option value="1">Kaos Distro</option>
+                      <option value="2">Kemeja Pria</option>
+                      <option value="3">Baju Kaos</option>
+                      <option value="4">Pakaian</option>
+                    </select>
+                  
+                  </div>
+
                 <div class="form-group">
                     <label for="">Deskripsi</label>
                     <textarea name="deskripsi" class="form-control" cols="30" rows="5"></textarea>

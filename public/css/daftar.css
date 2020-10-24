@@ -1,0 +1,72 @@
+body,html{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background-color: #fff;
+	background-image: url(tas.jpg);
+	overflow-y: hidden;
+}
+
+.container{
+	overflow: hidden;
+	width: 500px;
+	height: 600px;
+	margin: 50px auto;
+	background: #fff;
+	padding-top: 50px;
+	padding: 30px;
+	border: solid 1px salmon;
+	border-radius: 10px;
+
+}
+
+
+
+
+
+
+
+.df label{
+	display: block;
+	font-size: 18px;
+	font-weight: 700;
+	margin: 8px 0;
+}
+
+.txtb{
+	width: 500px;
+	padding: 8px 0;
+	font-size: 18px;
+}
+
+.acc{
+	margin: 8px 0;
+	font-size: 12px;
+}
+
+.button{
+	display: block;
+	float: right;
+	margin-right: 75px;
+	background: #f44336;
+	font-size: 18px;
+	padding: 8px 30px;
+	color: white;
+	border: none;
+}
+
+.button:hover{
+	background-color: lightblue;
+	color: white;
+}
+
+.login{
+margin-left: 30px;
+}
+
+.login a:hover {
+	background-color: lightblue;
+	color: white;
+
+}
+

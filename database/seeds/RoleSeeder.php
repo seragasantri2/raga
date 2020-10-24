@@ -16,6 +16,10 @@ class RoleSeeder extends Seeder
         ]);
 
         DB::table('roles')->insert([
+            'nama'  => 'reseller'
+        ]);
+
+        DB::table('roles')->insert([
             'nama'  => 'user'
         ]);
     }

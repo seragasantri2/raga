@@ -1,0 +1,32 @@
+.card p {
+	margin-top: -10px;
+	margin-bottom: 1px;
+}
+
+.row .card:hover{
+	box-shadow: 2px 2px 2px rgba(0,0,0,0,6);
+	transform: scale(1.02);
+}
+
+.deskripsi{
+	margin-left: 50px;
+	margin-right: 50px;
+	
+}
+
+.scd{
+	width: 250px;
+}
+
+.lengan{
+	width: 250px;
+}
+
+.row{
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.about{
+	background-color: #ffe5e3;
+}

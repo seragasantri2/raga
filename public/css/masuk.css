@@ -1,0 +1,73 @@
+body,html{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background-color: #fff;
+	background-image: url(tas.jpg);
+	overflow-y: hidden;
+}
+.container{
+	overflow: hidden;
+	width: 400px;
+	height: 500px;
+	margin: 90px auto;
+	background: #fff;
+	padding-top: 50px;
+	padding: 30px;
+	border: solid 1px salmon;
+	border-radius: 10px;
+
+}
+
+
+.login h2{
+	font-size: 30px;
+	color: #f44336;
+}
+
+.login label{
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 700;
+	margin: 8px 0;
+}
+
+.txtb{
+	width: 80%;
+	padding: 8px 0;
+	font-size: 18px;
+}
+
+.check{
+	margin: 8px 0;
+}
+
+.btn{
+	display: block;
+	float: right;
+	background: #f44336;
+	font-size: 18px;
+	padding: 8px 30px;
+	color: white;
+	border: none;
+}
+
+.btn:hover{
+	background-color: lightblue;
+	color: white;
+}
+
+.akun{
+	margin-left: 30px;
+	font-size: 14px;
+}
+
+.akun a{
+	color: #f44336;
+	text-decoration: none;
+}
+
+.akun a:hover{
+	background-color: lightblue;
+	color: white;
+}

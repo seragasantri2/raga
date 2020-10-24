@@ -1,0 +1,29 @@
+.login ul li {
+	display: inline-block;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.fitur{
+	background-color: #161470;
+	color: white;
+	
+}
+
+.about{
+	background-color: #ffe5e3;
+}
+
+textarea{
+	width: 250px;
+}
+
+.kotak{
+	width: 250px;
+}
+
+.kotak1{
+	width: 400px;
+}

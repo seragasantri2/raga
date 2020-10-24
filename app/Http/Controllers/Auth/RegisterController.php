@@ -40,6 +40,9 @@ class RegisterController extends Controller
                 return '/home';
             break;
             case '2':
+                return '/reseller';
+            break;
+            case '3':
                 return '/users';
             break;
         }
@@ -88,7 +91,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'alamat'    => $data['alamat'],
-            'role_id'  =>  '2'
+            'role_id'  =>  '3'
         ]);
     }
 }
