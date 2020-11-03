@@ -15,7 +15,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
-      <a class="navbar-brand" href="/home">SELAMAT DATANG RESELLER | <b>TokoKami</b></a>
+      <a class="navbar-brand" href="/reseller">SELAMAT DATANG RESELLER <b>{{Auth::User()->getFullname()}}</b>  | <b>TokoKami</b></a>
       
         <form class="form-inline my-2 my-lg-0 ml-auto">
           <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
@@ -39,16 +39,16 @@
       <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
         <ul class="nav flex-column ml-3 mb-5">
         <li class="nav-item">
-          <a class="nav-link active text-white" href="/home"> <i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a><hr class="bg-secondary">
+          <a class="nav-link active text-white" href="/reseller"> <i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a><hr class="bg-secondary">
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/product"> <i class="fas fa-book-open mr-2"></i> Daftar Produk</a><hr class="bg-secondary">
+          <a class="nav-link text-white" href="/reseller/product"> <i class="fas fa-book-open mr-2"></i> Daftar Produk</a><hr class="bg-secondary">
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/user"><i class="fas fa-user mr-2"></i> Daftar User</a><hr class="bg-secondary">
+          <a class="nav-link text-white" href="/reseller/user"><i class="fas fa-user mr-2"></i> Daftar User</a><hr class="bg-secondary">
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/jadwal"> <i class="fas fa-calendar-alt mr-2"></i> Jadwal Promo</a><hr class="bg-secondary">
+          <a class="nav-link text-white" href="/reseller/jadwal"> <i class="fas fa-calendar-alt mr-2"></i> Jadwal Promo</a><hr class="bg-secondary">
         </li>
 
         

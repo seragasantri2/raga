@@ -3,7 +3,7 @@
 <div class="col-md-10 p-5 pt-2">
         <h3><i class="fas fa-user mr-2"></i> DAFTAR USER </h3><hr>
 
-            <a href="" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>TAMBAH</a>
+            
            <table class="table table-striped table-bordered">
             <thead>
               <tr>
@@ -24,7 +24,14 @@
                 <td>{{$adm->no_telpon}}</td>
                  <td>{{$adm->created_at}}</td>
                 <td><i class="fas fa-edit bg-primary p-2" data-toggle="tooltip" title="edit"></i></td>
-                <td><i class=" fas fa-trash-alt bg-danger p-2" data-toggle="tooltip" title="Delete"></i></td>
+                <td class="ml-auto">
+                <form action="/user/delete/{{$adm->id}}" method="post">
+                @csrf
+                @method('delete')
+                    <button class="btn btn-danger "><i class="fas fa-trash-alt"></i></button>
+                </form>
+                
+                </td>
               </tr>
             @endforeach
             </tbody>
@@ -33,4 +40,9 @@
         
         </div>
       </div>
+
+
+      <!-- Button trigger modal -->
+
+
 @endsection

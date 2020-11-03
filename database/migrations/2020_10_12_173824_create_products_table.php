@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('nama');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->integer('harga');
             $table->integer('stok');
             $table->string('image');

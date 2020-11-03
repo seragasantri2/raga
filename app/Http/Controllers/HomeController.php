@@ -29,8 +29,12 @@ class HomeController extends Controller
     {
         $users = DB::table('users')
                     ->select(DB::raw('COUNT(id) as total_user'))
-                    ->where('role_id','=','2')
+                    ->where('role_id','=','3')
                     ->first();
+        $reseller = DB::table('users')
+                    ->select(DB::raw('COUNT(id) as total_reseller'))
+                    ->where('role_id','=','2')
+                    ->first(); 
 
         $admin = DB::table('users')
                     ->select(DB::raw('COUNT(id) as total_admin'))
@@ -39,6 +43,7 @@ class HomeController extends Controller
         
                     $data = array(
                         'users'  => $users,
+                        'reseller' => $reseller,
                         'admin'  => $admin,   
                     );                   
         $products = Product::where('nama','LIKE','%'.$request->search.'%')->paginate(1);

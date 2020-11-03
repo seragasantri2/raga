@@ -3,7 +3,7 @@ body,html{
 	padding: 0;
 	font-family: sans-serif;
 	background-color: #fff;
-	background-image: url(tas.jpg);
+	background-image: url(../../img/tas.jpg);
 	overflow-y: hidden;
 }
 .container{

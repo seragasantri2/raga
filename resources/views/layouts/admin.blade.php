@@ -16,7 +16,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
-      <a class="navbar-brand" href="/home">SELAMAT DATANG ADMIN | <b>TokoKami</b></a>
+      <a class="navbar-brand" href="/home">SELAMAT DATANG ADMIN <strong>{{Auth::User()->getFullname()}}</strong> | <b>TokoKami</b></a>
       
         <form class="form-inline my-2 my-lg-0 ml-auto">
           <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
@@ -46,8 +46,12 @@
           <a class="nav-link text-white" href="/product"> <i class="fas fa-book-open mr-2"></i> Daftar Produk</a><hr class="bg-secondary">
         </li>
         <li class="nav-item">
+          <a class="nav-link text-white" href="/category"><i class="fas fa-user mr-2"></i> Daftar Category</a><hr class="bg-secondary">
+        </li>
+        <li class="nav-item">
           <a class="nav-link text-white" href="/user"><i class="fas fa-user mr-2"></i> Daftar User</a><hr class="bg-secondary">
         </li>
+        
         <li class="nav-item">
           <a class="nav-link text-white" href="/daftarreseller"><i class="fas fa-user mr-2"></i> Daftar Reseller</a><hr class="bg-secondary">
         </li>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\category;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
@@ -16,6 +17,7 @@ class ProductController extends Controller
     {
         Product::where('nama', $request->search)->paginate(10);
         $products = Product::all();
+        
         return view('product/product',compact('products'));
     }
 
@@ -52,4 +54,6 @@ class ProductController extends Controller
     {
         return view('product.jadwal');
     }
+
+
 }

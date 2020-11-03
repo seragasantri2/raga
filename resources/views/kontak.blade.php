@@ -7,7 +7,7 @@
   <h3 class="text-center mt-5">Contact</h3>
   <div class="row mt-5">
     <div class="col-sm-5">
-      <img src="maps.jpg">
+      <img src="{{asset('img/maps.jpg')}}">
       <h4><b>Baju.id</b></h4>
       <p>Jl.Flamboyan II no.15 Menteng Dalam Tebet Jakarta Selatan 12780. <br>+6287775415919 <br> instagram: @Baju.id <br>Facebook: Baju.id <br>baju.id@gmail.com</p>
     </div>

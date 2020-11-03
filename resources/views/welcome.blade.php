@@ -7,13 +7,13 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="slide1.jpg" class="d-block w-100" alt="...">
+          <img src="{{asset('img/slide1.jpg')}}" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="slide2.jpg" class="d-block w-100" alt="...">
+          <img src="{{asset('img/slide2.jpg')}}" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="slide3.jpg" class="d-block w-100" alt="...">
+          <img src="{{asset('img/slide3.jpg')}}" class="d-block w-100" alt="...">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -40,16 +40,16 @@
             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="kaos2.jpg" class="d-block w-100" alt="...">
+      <img src="{{asset('img/kaos2.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="kaos4.jpg" class="d-block w-100" alt="...">
+      <img src="{{asset('img/kaos4.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="kaos6.jpg" class="d-block w-100" alt="...">
+      <img src="{{asset('img/kaos6.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="kaos9.jpg" class="d-block w-100" alt="...">
+      <img src="{{asset('img/kaos9.jpg')}}" class="d-block w-100" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -64,47 +64,47 @@
         </div>
         <div class="row">
         <div class="col-sm-3 pl-5 mt-5 ml-3 mr-5 ">
-            <img src="fashionable1.jpg"> 
+            <img src="{{asset('img/fashionable1.jpg')}}"> 
         </div>
         <div class="col-sm-3 pl-5 mt-5 mr-5">
-            <img src="style1.jpg"> 
+            <img src="{{asset('img/style1.jpg')}}"> 
         </div>
         <div class="col-sm-3 mt-5 ml-5">
-            <img src="power1.jpg"> 
+            <img src="{{asset('img/power1.jpg')}}"> 
         </div>
     </div>
     </div>
     <h4 class="text-center font-weight-bold m-4 mt-5">BAJU BAGUS KUALITAS TERBAIK <br> MULAI DARI RP.30.000</h4>
     <div class="row">
         <div class="col-sm-3 mt-5 ml-5 pl-5">
-            <img src="kaos2.jpg"> 
+            <img src="{{asset('img/kaos2.jpg')}}"> 
         </div>
         <div class="col-sm-3 mt-5 ml-5 mr-5">
-            <img src="kaos4.jpg"> 
+            <img src="{{asset('img/kaos4.jpg')}}"> 
         </div>
         <div class="col-sm-3 mt-5 ml-5 mr-5">
-            <img src="kaos6.jpg"> 
+            <img src="{{asset('img/kaos6.jpg')}}"> 
         </div>
     </div>
     <h4 class="text-center font-weight-bold m-4 mt-5">KATEGORI PRODUK</h4>
 
     <div class="row">
         <div class="col-sm-3  mt-3 ml-5 mr-5">
-            <img src="bajucakep.jpg" title="fashion pria">
+            <img src="{{asset('img/bajucakep.jpg')}}" title="fashion pria">
         </div>
         
         <div class="col-sm-3  mt-4 ml-5 mr-5">
-            <img src="bajupr.jpg" title="Fashion wanita">
+            <img src="{{asset('img/bajupr.jpg')}}" title="Fashion wanita">
         </div>
 
         <div class="col-sm-3 mt-4 ml-5">
-            <img src="bajuanak.jpg" title="baju anak">
+            <img src="{{asset('img/bajuanak.jpg')}}" title="baju anak">
         </div>
     </div>
     <div class="fitur mt-5 ">
     <div class="row">
         <div class="col-sm-5  pl-5 mt-5 ml-5">
-            <img src="tki.jpg" title="fashion pria">
+            <img src="{{asset('img/tki.jpg')}}" title="fashion pria">
         </div>
         <div class="col-sm-5 mt-5 ml-5 mr-5">
             <h5><b>Yuk, Gabung menjadi reseller bersama Kami</b></h5>
@@ -121,14 +121,14 @@
         </div>
 
         <div class="col-sm-5  pl-5 mt-5 ml-5">
-            <img src="tki1.jpg" title="fashion pria">
+            <img src="{{asset('img/tki1.jpg')}}" title="fashion pria">
         </div>
     
     </div>
 
     <div class="row">
         <div class="col-sm-5  pl-5 mt-5 ml-5">
-            <img src="kurir.jpg" title="fashion pria">
+            <img src="{{asset('img/kurir.jpg')}}" title="fashion pria">
         </div>
         <div class="col-sm-5 mt-5 ml-5 mr-5">
             <h5><b>Ga Perlu repot lagi antar paket kekurir</b></h5>
@@ -147,16 +147,16 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="metode1.jpg" class="d-block w-100" alt="...">
+      <img src="{{asset('img/metode1.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="metode2.jpg" class="d-block w-100" alt="...">
+      <img src="{{asset('img/metode2.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="metode3.jpg" class="d-block w-100" alt="...">
+      <img src="{{asset('img/metode3.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="metode4.jpg" class="d-block w-100" alt="...">
+      <img src="{{asset('img/metode4.jpg')}}" class="d-block w-100" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -184,7 +184,7 @@
         Kamu bisa melakukan pemesanan Baju secara online dari mana saja. <b>Baju.id</b> hadir untuk memberikan kemudahan dengan layanan same day flower delivery kepada para pelanggan yang berada di seluruh JABODETABEK.
         <br>
 
-        <br>Kami menghargai kesibukanmu, sehingga kami menawarkan cara memesan bunga yang mudah, cepat, dan terpercaya. Cukup dengan mengunjungi website kami, kamu bisa memilih Pilhan Baju yang sesuai kebutuhanmu > isi formulir pemesanan > pilih metode pembayaran > dan tunggu pesananmu diantar tepat pada waktunya!
+        <br>Kami menghargai kesibukanmu, sehingga kami menawarkan cara memesan bunga yang mudah, cepat, dan terpercaya. Cukup dengan mengunjungi website kami, kamu bisa memilih Pilhan Baju yang sesuai kebutuhanmu > isi formulir pemesanan > pilih {{asset('img/metode pembayaran > dan tunggu pesananmu diantar tepat pada waktunya!
             </div>
         </div>
         </div>

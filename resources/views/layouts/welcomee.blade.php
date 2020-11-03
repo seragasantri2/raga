@@ -14,7 +14,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img src="Logobaju1.jpg">
+        <img src="{{asset('img/Logobaju1.jpg')}}">
   <a class="navbar-brand" href="home1.html"><b>Baju.id</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-5">
       <li class="nav-item active">
-        <a class="nav-link" href="/product"><b> Produk </b><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/users"><b> Produk </b><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('blog')}}"><b>Blog</b></a>

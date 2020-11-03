@@ -44,7 +44,7 @@ class WelcomeController extends Controller
     {
         return view('kontak');
     }
-
+ 
     public function pusatbantuan()
     {
         return view('pusatbantuan');

@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
    <link rel="stylesheet" href="{{ asset('css/product.css')}}">
+
    <script src="https://kit.fontawesome.com/a1bc18a4b6.js" crossorigin="anonymous"></script>
 
     <title>Cari Produkmu</title>
@@ -22,19 +23,24 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto mr-2">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Produk Kami<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Hubungi Kami<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Pusat Bantuan<span class="sr-only">(current)</span></a>
-        </li>
+      <ul class="navbar-nav ml-auto mr-2"> 
+      <li class="nav-item active">
+        <a class="nav-link" ><b>|| Nama: {{Auth::user()->getFullname()}} || </b><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto ml-4"> 
+      <li class="nav-item active ml-auto">
+        <a class="nav-link" href="/users"><b> Produk </b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/blog"><b>Blog</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/kontak"><b>Kontak</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/pusatbantuan"><b>Pusat Bantuan</b></a>
+      </li>
         <li class="nav-item active">
         <a href="{{ route('logout') }}" class="nav-link text-dark" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -44,7 +50,7 @@
         
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       <div class="icon mt-2 mr-3">
@@ -58,16 +64,6 @@
     </div>
   </nav>
 
-  <div class="row mt-5 no-gutters">
-    <div class="col-md-2 bg-light">
-      <ul class="list-group list-group-flush p-2 pt-4">
-        <li class="list-group-item bg-warning"><i class="fas fa-list"></i>  KATEGORI PRODUK</li>
-        <li class="list-group-item"><i class="fas fa-angle-right"></i> Kaos Distro</li>
-        <li class="list-group-item"><i class="fas fa-angle-right"></i> Baju Distro Pria</li>
-        <li class="list-group-item"><i class="fas fa-angle-right"></i> Fashion anak</li>
-        <li class="list-group-item"><i class="fas fa-angle-right"></i> Fashion Wanita</li>
-      </ul>
-    </div>
 
 
 
