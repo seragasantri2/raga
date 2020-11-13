@@ -15,7 +15,7 @@
             @endif
 			<br>
 			<label for="">Password :</label>
-			<input id="password" type="password" class="txtb" name="password" required>
+			<input id="password" type="password" class="txtb form-password" name="password" required>
             @if ($errors->has('password'))
               <span class="help-block">
                  <strong>{{ $errors->first('password') }}</strong>
@@ -32,6 +32,6 @@
 	</div>
 
     
-
+  
 
 @endsection

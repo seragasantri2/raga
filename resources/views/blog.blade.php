@@ -3,29 +3,38 @@
 <link rel="stylesheet" href="{{asset('css/products.css')}}">
 @endsection
 @section('content')
-<div class="row">
-  <div class="col-sm-3 bg-light mt-3 ml-5 mr-5">
-<img src="{{asset('img/sakura.jpg')}}">
-<h3 class="mt-3">Unik, Ternyata Ini arti,filosofi dari Bunga sakura di Jepang</h3>
-<p>23 Oktober 2020</p>
-<p>Bunga sakura merupakan jenis bunga yang sangat populer dan sering dijadikan sebagai hiasan yang sangat cocok untuk dekorasi rumah atau melambangkan perayaan sesuatu.</p>
-<a href="#" class="btn btn-primary">Selengkapnya</a>
-</div>
-    <div class="col-sm-3 bg-light mt-3 ml-5 mr-5">
-  <img src="{{asset('img/sedapmalam.jpg')}}">
-  <h3 class="mt-3">Unik, Ternyata Bunga sedap malam Hanya mengeluarkan aroma wangi pada malam hari</h3>
-  <p>23 Oktober 2020</p>
-  <p>Bunga sakura merupakan jenis bunga yang sangat populer dan sering dijadikan sebagai hiasan yang sangat cocok untuk dekorasi rumah atau melambangkan perayaan sesuatu.</p>
-  <a href="#" class="btn btn-primary">Selengkapnya</a>
+<div class="row mt-5 no-gutters">
+<div class="col-md-2 bg-light">
+    
+    <ul class="list-group list-group-flush p-2 pt-4">
+        <li class="list-group-item bg-warning"><i class="fas fa-list"></i>  KATEGORI PRODUK</li>
+        @foreach($kategori as $row)
+        <li class="list-group-item"> <a href="/kategori/{{$row->id}}" class="text-dark"><i class="fas fa-angle-right"></i> {{$row->nama}}</a></li>
+        @endforeach
+  </ul>
+
+  
   </div>
-    <div class="col-sm-3 bg-light mt-3 ml-5 mr-5">
-  <img src="{{asset('img/melati.jpg')}}">
-  <h3 class="mt-3">Dibalik kesan mistis aroma melati pada malam hari</h3>
-  <p>23 Oktober 2020</p>
-  <p>Bunga sakura merupakan jenis bunga yang sangat populer dan sering dijadikan sebagai hiasan yang sangat cocok untuk dekorasi rumah atau melambangkan perayaan sesuatu.</p>
-  <a href="#" class="btn btn-primary">Selengkapnya</a>
+ <div class="col-md-10">
+ <div class="row mx-auto">
+  @foreach($artikel as $art)
+    <div class="col-sm-3 bg-light mt-3 ml-5 mr-4" style="height:16cm;">
+      <img src="{{asset('storage/images/artikel/'.$art->image)}}" class="mt-3"  width="250px" height="250px">
+      <h3 class="mt-3">{{substr($art->judul, 0, 20)}}....</h3>
+      <p>{{$art->created_at->toFormattedDateString()}}</p>
+      <p>{!! substr($art->isi, 0, 100) !!}....</p>
+      <p>
+      <strong>Kategori :</strong>{{$art->kategori->nama}} ,
+      <strong>Tag :</strong>{{$art->tag->nama}}
+      </p>
+      <a href="/tampilblog/{{$art->id}}" class="btn btn-primary mb-3">Lihat...</a>
+    </div>
+  @endforeach
   </div>
+
 </div>
+
+
 
 
   <!-- Optional JavaScript; choose one of the two! -->

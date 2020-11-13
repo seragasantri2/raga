@@ -22,6 +22,10 @@ class CreateProductsTable extends Migration
             $table->integer('harga');
             $table->integer('stok');
             $table->string('image');
+            $table->string('berat');
+            $table->string('panjang');
+            $table->string('lebar');
+            $table->string('tinggi');
             $table->timestamps();
         });
     }

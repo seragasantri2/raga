@@ -25,7 +25,7 @@
             <td>{{$product->nama}}</td>
            
             <td class="icon ml-auto">
-            <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#update1{{$product->id}}" ><i class="fas fa-edit"></i></a>
             </td>
             <td class="ml-auto">
             <form action="/category/delete/{{$product->id}}" method="post">
@@ -80,5 +80,42 @@
   </div>
 </div>
 
+<!-- Button trigger modal -->
+@foreach ($category as $row)
+<div class="modal fade" id="update1{{$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form role="form" id="quickForm" action="/category/update/{{$row->id}}" method="post" enctype="multipart/form-data">
+              @csrf
+              @method('patch')
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="">Nama Kategori</label>
+                    <input type="text" name="nama" class="form-control" value="{{$row->nama}}"  placeholder="Name Product">
+                  </div>
+               
+                </div>
+                <!-- /.card-body -->
+                <div class="col-sm-12 text-right">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>  
+                </div>
+               
+              </form>
+      </div>
+  
+    </div>
+  </div>
+</div>
+@endforeach
 <!-- Button trigger modal -->
 @endsection

@@ -16,13 +16,15 @@ class ProductController extends Controller
     public function index(request $request)
     {
         Product::where('nama', $request->search)->paginate(10);
+        $category   = Category::all();
         $products = Product::all();
         
-        return view('product/product',compact('products'));
+        return view('product/product',compact('products', 'category'));
     }
 
     public function create()
     {
+       
         return view('product.create');
     }   
 
@@ -41,6 +43,25 @@ class ProductController extends Controller
         
         Product::create($input);
         return redirect("/product");
+    }
+
+    public function update(Request $request, $id)
+    {
+        $product = product::find($id)->update([
+            'category_id'   => $request->category_id,
+            'nama'          => $request->nama,
+            'deskripsi'     => $request->deskripsi,
+            'harga'         => $request->harga,
+            'stok'          => $request->stok,
+            'panjang'       => $request->panjang,
+            'berat'         => $request->berat,
+            'tinggi'        => $request->tinggi,
+            'lebar '        => $request->lebar
+         
+             
+        ]);
+      return redirect()->back();
+    
     }
 
     public function delete($id)

@@ -19,6 +19,8 @@ Route::post('/createblog','WelcomeController@create');
 Route::get('/blog','WelcomeController@blog')->name('blog');
 Route::get('/kontak','WelcomeController@kontak')->name('kontak');
 Route::get('/pusatbantuan','WelcomeController@pusatbantuan')->name('pusatbantuan');
+route::get('/kategori/{id}','WelcomeController@kategori');
+route::get('/tampilblog/{id}','WelcomeController@tampilblog');
 
 
 Auth::routes();
@@ -30,6 +32,7 @@ Route::get('/product','ProductController@index')->name('produk');
 Route::post('/product/add','ProductController@createData')->middleware('auth');
 Route::get('/product','ProductController@index')->middleware('auth');
 Route::get('/product/create','ProductController@create')->name('create-product')->middleware('auth');
+Route::patch('/product/update/{id}','ProductController@update');
 Route::delete('/product/delete/{id}','ProductController@delete')->name('delete-product')->middleware('auth');
 
 
@@ -37,23 +40,42 @@ Route::delete('/product/delete/{id}','ProductController@delete')->name('delete-p
 //Category
 Route::get('/category','CategoryController@index');
 Route::post('/category/add','CategoryController@category')->middleware('auth');
+Route::patch('/category/update/{id}','CategoryController@update');
 Route::delete('/category/delete/{id}','CategoryController@cdelete')->name('delete-categori')->middleware('auth');
 
 //jadwal
 Route::get('/jadwal','ProductController@jadwal')->middleware('auth');
-
+ 
 //Reseller
-Route::get('/reseller','ResellerController@index');
+Route::get('/reseller','ResellerController@index')->name('reseller');
+Route::get('/reseller/product','ResellerController@product');
+Route::patch('/reseller/product/{id}','ResellerController@update');
+Route::get('/reseller/user','ResellerController@user');
+Route::patch('/reseller/user/{id}','ResellerController@updateUser');
+Route::get('/reseller/jadwal','ResellerController@promo');
 
+ 
 
 // Users
 Route::get('/user','UserController@index')->name('user')->middleware('auth');
+Route::patch('/admin/user/update/{id}','UserController@update');
 Route::delete('/user/delete/{id}','UserController@delete')->name('delete-user')->middleware('auth');
 Route::get('/daftaradmin','UserController@admin')->middleware('auth');
+Route::patch('/admin/update/{id}','UserController@updateUser');
 Route::post('/admin/add','UserController@createAdmin');
 Route::get('/daftarreseller','UserController@reseller')->middleware('auth');
-Route::get('/artikel','UserController@artikel')->middleware('auth');
+Route::patch('/daftarreseller/update/{id}','UserController@update');
 Route::post('/reseller/add','UserController@create');
+Route::get('/admin/kategoriartikel','UserController@kategoriartikel')->middleware('auth');
+Route::post('/admin/tambahKartikel','UserController@tambahKategori')->middleware('auth');
+Route::get('/admin/Tartikel','UserController@tag')->middleware('auth');
+Route::post('/admin/tambahTartikel','UserController@tambahTag')->middleware('auth');
+Route::get('/admin/artikel','UserController@artikel')->middleware('auth');
+Route::post('/admin/tambahartikel','UserController@tambahArtikel')->middleware('auth');
+Route::get('/admin/tambartikel','UserController@tambartikel')->middleware('auth');
+Route::get('/admin/artikel/{id}','UserController@perbaruiKategori')->middleware('auth');
+Route::patch('/artikel/update/{id}','UserController@updateartikel');
+
 
 
 
@@ -64,3 +86,8 @@ Route::get('/users/blog','UserbiasaController@blog')->name('blog');
 Route::get('/users/kontak','UserbiasaController@kontak')->name('kontak');
 Route::get('/users/pusatbantuan','UserbiasaController@pusatbantuan')->name('pusatbantuan');
 route::get('/category/{id}','UserbiasaController@category');
+route::get('/users/kategori/{id}','WelcomeController@kategori');
+Route::get('/cart','UserbiasaController@cart');
+route::post('/cart/store','UserbiasaController@store');
+Route::delete('/cart/remove/{id}','UserbiasaController@removecart' );
+route::patch('/cart/update/{id}','UserbiasaController@updatecart');

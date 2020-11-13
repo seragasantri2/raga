@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
    <link rel="stylesheet" href="{{ asset('css/product.css')}}">
-
+   @yield('css')
    <script src="https://kit.fontawesome.com/a1bc18a4b6.js" crossorigin="anonymous"></script>
 
     <title>Cari Produkmu</title>
@@ -55,8 +55,8 @@
       </form>
       <div class="icon mt-2 mr-3">
         <h5>
-          <i class="fas fa-cart-plus ml-3 mr-3" data-toggle="tooltip" title="Keranjangmu"></i>
-          <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Kotak Masuk"></i>
+        <a href="/cart"><i class="fas fa-cart-plus ml-3 mr-3" data-toggle="tooltip" title="Keranjangmu"></i></a>
+         <a href=""><i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Kotak Masuk"></i></a>
           <i class="fas fa-bell mr-3" data-toggle="tooltip" title="Notifikasi"></i>
         </h5>
       </div>

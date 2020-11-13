@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Artikel;
 use App\Models\Blog;
+use App\Models\KategoriArtikel;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -34,10 +36,24 @@ class WelcomeController extends Controller
 
     public function blog()
     {
-        $category   = category::all();
-        $blog   = Blog::all();
-        return view('blog', compact('blog','category'));
-        // dd($blog);
+        $kategori = KategoriArtikel::all();
+        $artikel = Artikel::all();
+        return view('blog', compact('artikel','kategori'));
+        
+    }
+
+    public function tampilblog(Request $request, $id)
+    {
+        $kategori = KategoriArtikel::all();
+        $artikel = Artikel::where('id', $request->id)->first();
+        return view('tampilblog', compact('artikel','kategori'));
+    }
+
+    public function kategori($id)
+    {
+        $kategori  = KategoriArtikel::all();
+        $artikel = Artikel::where('kategori_id',$id)->get();
+        return view('blog', compact('kategori', 'artikel','id'));
     }
 
     public function kontak()
@@ -49,4 +65,4 @@ class WelcomeController extends Controller
     {
         return view('pusatbantuan');
     }
-}
+} 

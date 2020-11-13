@@ -15,55 +15,104 @@
     <title>Back-end</title>
   </head>
   <body>
+  
+
     <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
-      <a class="navbar-brand" href="/home">SELAMAT DATANG ADMIN <strong>{{Auth::User()->getFullname()}}</strong> | <b>TokoKami</b></a>
+      <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>TokoKami</b></a>
       
         <form class="form-inline my-2 my-lg-0 ml-auto">
-          <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
         <div class="icon ml-4">
           <h5>
-            <a href=""><i class="fas fa-envelope mr-3 text-dark" data-toggle="tooltip" title="Pesan Masuk" ></i></a>        
-            <a href=""><i class="fas fa-bell mr-3 text-dark" data-toggle="tooltip" title="Notifikasi"></i></a>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt mr-3 text-dark" data-toggle="tooltip" title="Keluar"></i></a>
-           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-             @csrf
-            </form>
+            <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Pesan Masuk" ></i>
+            <i class="fas fa-bell mr-3" data-toggle="tooltip" title="Notifikasi"></i>
           </h5>
         </div>
       </div>
+      <!-- Example split danger button -->
+      <div class="btn-group">
+        <button type="button" class="btn btn-warning"><i class="fas fa-user mr-2"></i><b>{{Auth::User()->getFullname()}}</b></button>
+        <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Profil</a>
+          <a class="dropdown-item" href="#">Pengaturan</a>
+          <a class="dropdown-item" href="#">Bantuan</a>
+          <div class="dropdown-divider"></div>
+          <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</i></a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+                  </form>
+        </div>
+      </div>
     </nav>
-
+      
     <div class="row no-gutters mt-5">
       <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
         <ul class="nav flex-column ml-3 mb-5">
         <li class="nav-item">
           <a class="nav-link active text-white" href="/home"> <i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a><hr class="bg-secondary">
         </li>
+
         <li class="nav-item">
-          <a class="nav-link text-white" href="/product"> <i class="fas fa-book-open mr-2"></i> Daftar Produk</a><hr class="bg-secondary">
+          <!-- Example split danger button -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-dark"> <i class="fas fa-book-open mr-2"></i> Produk</button>
+            <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/product">Daftar Produk</a>
+              <a class="dropdown-item" href="/category">Daftar Category</a>              
+            </div>
+          </div>
+          <hr class="bg-secondary">
         </li>
+
         <li class="nav-item">
-          <a class="nav-link text-white" href="/category"><i class="fas fa-user mr-2"></i> Daftar Category</a><hr class="bg-secondary">
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="/user"><i class="fas fa-user mr-2"></i> Daftar User</a><hr class="bg-secondary">
+          <!-- Example split danger button -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-dark"> <i class="fas fa-user mr-2"></i> Daftar User</button>
+            <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item"href="/user">User Biasa</a>
+              <a class="dropdown-item" href="/daftarreseller">Reseller</a>
+              <a class="dropdown-item" href="/daftaradmin">Admin</a>
+              
+            </div>
+          </div>
+          <hr class="bg-secondary">
         </li>
         
         <li class="nav-item">
-          <a class="nav-link text-white" href="/daftarreseller"><i class="fas fa-user mr-2"></i> Daftar Reseller</a><hr class="bg-secondary">
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="/daftaradmin"> <i class="fas fa-user mr-2"></i> Daftar Admin</a><hr class="bg-secondary">
-        </li>
-        <li class="nav-item">
           <a class="nav-link text-white" href="/jadwal"> <i class="fas fa-calendar-alt mr-2"></i> Jadwal Promo</a><hr class="bg-secondary">
         </li>
+             
+  
         <li class="nav-item">
-          <a class="nav-link text-white" href="/artikel"> <i class="fas fa-calendar-alt mr-2"></i> POST artikel</a><hr class="bg-secondary">
+          <!-- Example split danger button -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-dark"> <i class="fas fa-book-open mr-2"></i> Artikel</button>
+            <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu"> 
+              <a class="dropdown-item"href="/admin/kategoriartikel">Kategori Artikel</a>
+              <a class="dropdown-item" href="/admin/Tartikel">Tag Artikel</a>
+              <a class="dropdown-item" href="/admin/artikel">POS Artikel</a>
+              
+            </div>
+          </div>
+          <hr class="bg-secondary">
         </li>
+
+
 
         
       </ul>
@@ -71,9 +120,11 @@
         
       </div>
         
-      </div>
-      @yield('content')
-      </div>
+      </div>  
+        @yield('content')
+    </div>
+   
+
     
 
     <!-- Optional JavaScript -->

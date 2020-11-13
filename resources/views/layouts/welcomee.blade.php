@@ -25,7 +25,7 @@
         <a class="nav-link" href="/users"><b> Produk </b><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('blog')}}"><b>Blog</b></a>
+        <a class="nav-link" href="/blog"><b>Blog</b></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/kontak"><b>Kontak</b></a>

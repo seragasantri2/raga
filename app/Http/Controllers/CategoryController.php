@@ -21,6 +21,15 @@ class CategoryController extends Controller
         return redirect()->back();
     }
 
+    
+    public function update(request $request, $id)
+    {
+        $category = Category::find($id)->update([
+            'nama'  => $request->nama,
+        ]);
+        return redirect()->back();
+    }
+
     public function cdelete($id)
     {
         category::destroy($id);

@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 
 @section('tittle','Product')
+
+@section('css')
+    <script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
+@endsection
+
 @section('content')
 <!-- Button trigger modal -->
 <div class="col-md p-5 pt-2">
@@ -27,7 +32,7 @@
             <td>Rp. {{number_format($product->harga,0,',','.')}}</td>
             <td>{{$product->stok}}</td>
             <td class="icon ml-auto">
-            <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#update{{$product->id}}"><i class="fas fa-edit"></i></a>
             </td>
             <td class="ml-auto">
             <form action="/product/delete/{{$product->id}}" method="post">
@@ -63,37 +68,106 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" name="nama" class="form-control"  placeholder="Name Product">
+                    <input type="text" name="nama"  class="form-control"  placeholder="Name Product" required>
+                     
+                    @if ($errors->has('nama'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('nama') }}</strong>
+                        </span>
+                    @endif
                   </div>
                   <div class="form-group">
                     <label for="">harga</label>
-                    <input type="number" name="harga" class="form-control" >
+                    <input type="number" name="harga" required="required" class="form-control" >
+                    @if ($errors->has('harga'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('harga') }}</strong>
+                        </span>
+                    @endif
                   </div>
 
                   <div class="form-group">
                     <label for="">stok</label>
-                    <input type="number" name="stok" class="form-control" >
+                    <input type="number" name="stok" required="required" class="form-control" >
+                    @if ($errors->has('stok'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('stok') }}</strong>
+                        </span>
+                    @endif
                   </div>
-                  <div class="form-group">
-                    <label for="">stok</label>
-                    <select name="category_id" class="form-control">
-                      <option value="1">Kaos Distro</option>
-                      <option value="2">Kemeja Pria</option>
-                      <option value="3">Baju Kaos</option>
-                      <option value="4">Pakaian</option>
-                    </select>
                   
+                  <div class="form-group">
+                    <label for="">Kategori</label>
+                    
+                    <select name="category_id" class="form-control">
+                    @foreach($category as $c)
+                      <option value="{{$c->id}}">{{$c->nama}}</option>
+                      @endforeach 
+                    </select>
+                    
+                  </div>   
+                           
+
+                  
+                  <div class="col-sm form-group form-inline " style="text-align:left;">
+                    <ul>
+                        <label>Berat </label>
+                        <input type="number" required="required" class="form-control" require name="berat" style="width:100px" placeholder="gr" >
+                        @if ($errors->has('berat'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('berat') }}</strong>
+                        </span>
+                    @endif
+                    </ul>
+                    <ul>
+                        <label> Panjang </label>
+                        <input type="number" required="required"  class="form-control " name="panjang" style="width:100px"  placeholder="cm"  >
+                        @if ($errors->has('nama'))
+                        <span class="help-panajng">
+                        <strong>{{ $errors->first('panjang') }}</strong>
+                        </span>
+                    @endif
+                    </ul>
+                    <ul>
+                        <label >Lebar </label>
+                        <input type="number" required="required"  class="form-control " name="lebar" style="width:100px"  placeholder="cm" >
+                        @if ($errors->has('lebar'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('lebar') }}</strong>
+                        </span>
+                    @endif
+                    </ul>
+                    <ul>
+                        <label> Tinggi </label>
+                        <input type="number" required="required"  class="form-control" name="tinggi" style="width:100px"  placeholder="cm" >                    
+                        @if ($errors->has('tinggi'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('tingg') }}</strong>
+                        </span>
+                    @endif
+                    </ul>
                   </div>
 
-                <div class="form-group">
-                    <label for="">Deskripsi</label>
-                    <textarea name="deskripsi" class="form-control" cols="30" rows="5"></textarea>
+
+                  <div class="form-group">
+                    <label for="content">Deskripsi</label>
+                    <textarea name="deskripsi"  cols="5" rows="5" id="textcontent" cols="30" rows="10" class="form-control ckeditor" id="ckedtor"></textarea>
+                    @if ($errors->has('deskripsi'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('deskripsi') }}</strong>
+                        </span>
+                    @endif
                 </div>
 
                 
                   <div class="form-group">
                     <label for="exampleFormControlFile1">Gambar Produk</label>
-                    <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                    <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1" required>
+                    @if ($errors->has('image'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('image') }}</strong>
+                        </span>
+                    @endif
                   </div>
                 
 
@@ -112,6 +186,142 @@
     </div>
   </div>
 </div>
+
+
+
+@foreach($products as $row)
+
+<!-- Modal -->
+<div class="modal fade" id="update{{$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Produk</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form role="form" id="quickForm" action="/product/update/{{$row->id}}" method="POST" enctype="multipart/form-data">
+              @csrf
+              @method('PATCH')
+              
+              <div class="card-body">
+                  <div class="form-group">
+                    <label for="">Nama</label>
+                    <input type="text" name="nama"  class="form-control" value="{{$row->nama}}" placeholder="Name Product" required>
+                     
+                    @if ($errors->has('nama'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('nama') }}</strong>
+                        </span>
+                    @endif
+                  </div>
+                  <div class="form-group">
+                    <label for="">harga</label>
+                    <input type="number" name="harga" required="required"  value="{{$row->harga}}" class="form-control" >
+                    @if ($errors->has('harga'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('harga') }}</strong>
+                        </span>
+                    @endif
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">stok</label>
+                    <input type="number" name="stok" required="required"  value="{{$row->stok}}" class="form-control" >
+                    @if ($errors->has('stok'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('stok') }}</strong>
+                        </span>
+                    @endif
+                  </div>
+                  <div class="form-group">
+                    <label for="">Kategori</label>
+                    
+                    <select name="category_id" class="form-control">
+                    
+                      <option value="{{$row->category->id}}">{{$row->category->nama}}</option>
+                  
+                    </select>
+                    
+                  </div>             
+
+                  
+                  <div class="col-sm form-group form-inline " style="text-align:left;">
+                    <ul>
+                        <label>Berat </label>
+                        <input type="number" required="required" class="form-control" value="{{$row->berat}}" require name="berat" style="width:100px" placeholder="gr" >
+                        @if ($errors->has('berat'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('berat') }}</strong>
+                        </span>
+                    @endif
+                    </ul>
+                    <ul>
+                        <label> Panjang </label>
+                        <input type="number" required="required"  class="form-control" value="{{$row->panjang}}" name="panjang" style="width:100px"  placeholder="cm"  >
+                        @if ($errors->has('nama'))
+                        <span class="help-panajng">
+                        <strong>{{ $errors->first('panjang') }}</strong>
+                        </span>
+                    @endif
+                    </ul>
+                    <ul>
+                        <label >Lebar </label>
+                        <input type="number" required="required"  class="form-control" value="{{$row->lebar}}" name="lebar" style="width:100px"  placeholder="cm" >
+                        @if ($errors->has('lebar'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('lebar') }}</strong>
+                        </span>
+                    @endif
+                    </ul>
+                    <ul>
+                        <label> Tinggi </label>
+                        <input type="number" required="required"  class="form-control" name="tinggi" value="{{$row->tinggi}}" style="width:100px"  placeholder="cm" >                    
+                        @if ($errors->has('tinggi'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('tingg') }}</strong>
+                        </span>
+                    @endif
+                    </ul>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="content">Deskripsi</label>
+                    <textarea name="deskripsi"  cols="5" rows="5" id="textcontent" cols="30" rows="10" class="form-control ckeditor" id="ckedtor">{{$row->deskripsi}}</textarea>
+                    @if ($errors->has('deskripsi'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('deskripsi') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Gambar Produk</label>
+                    <input type="file" name="image" class="form-control-file mb-2" value="{{$row->image}}" id="exampleFormControlFile1" >
+                    <img src="{{asset('storage/images/products/'.$row->image)}}" alt="gambar" width="200px" height="200px">
+                  </div>
+                
+                </div>
+                <!-- /.card-body -->
+                <div class="col-sm-12 text-right">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>  
+                </div>
+               
+              </form>
+      </div>
+      @endforeach
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
 
 <!-- Button trigger modal -->
 

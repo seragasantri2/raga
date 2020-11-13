@@ -56,29 +56,19 @@
         <th>Harga</th>
         <td>: <b>Rp. {{number_format($product->harga,0,',','.')}}</b></td>
       </tr>
-      <tr>
-        <th>Jumlah</th>
-        <td><select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-        </select></td>
-      </tr>
-          <tr>
-            <th>Deskripsi :</th>
-            <td>{{$product->deskripsi}}</td>
-        
-        </tr>
     </table>
+          <strong>Deskripsi :</strong> 
+            <br>
+            <p>{!!$product->deskripsi !!}</p>
+            
+        </tr>
     <div class="modal-footer">
-    <a type="button" class="btn btn-warning mt-3"><b><i class="fas fa-cart-plus"></i> Add</b></a>
+    <form action="/cart/store" method="POST">
+        @csrf
+        <input type="hidden" value="{{$product->id}}" name="produk_id">
+        <button type="submit" class="btn btn-warning mt-3"><b><i class="fas fa-cart-plus"></i> Add</b></button>
+    </form> 
+    
     <a type="button" class="btn btn-primary mt-3"><b>Buy</b></a>
 
     </div>
