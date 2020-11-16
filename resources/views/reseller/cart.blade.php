@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.reseller')
 @section('css')
 <link rel="stylesheet" href="{{asset('css/cart.css')}}"> 
 @endsection
@@ -40,14 +40,14 @@
                 <div class="top">
                     <p class="item-name">{{$c->produk->nama}}</p> 
                     <div class="top-right">
-                        <p class="">Rp {{number_format($c->produk->harga)}}</p>
+                        <p class="">Rp {{number_format($c->produk->harga_reseller)}}</p>
                         <select name="qty" class="quantity" data-item="{{$c->id}}">
                         @for ($i = 1; $i <= 10; $i++)
                             <option value="{{$i}}" {{$c->qty == $i ? 'selected' :''}}> {{$i}} </option>
                         @endfor
                         </select>
                         <!-- Subtotal -->
-                        <p class="total-item">Rp {{number_format($c->produk->harga * $c->qty)}}</p>
+                        <p class="total-item">Rp {{number_format($c->produk->harga_reseller * $c->qty)}}</p>
                     </div>
                 </div>
                 <hr class="mt-2 mb-2">
@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-lg-2">
                         <!-- delete cart -->
-                        <form action="/cart/remove/{{$c->id}}" method="POST">
+                        <form action="/reseller/cart/remove/{{$c->id}}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Remove</button>
@@ -73,7 +73,7 @@
         </div>
     </div>
     @php
-    $total += ($c->produk->harga * $c->qty);
+    $total += ($c->produk->harga_reseller * $c->qty);
     @endphp
 @endforeach
 <div class="totalz">
@@ -96,13 +96,13 @@
     Array.from(classname).forEach(function(element){
      element.addEventListener('change', function(){
         const id = element.getAttribute('data-item');
-        axios.patch(`/cart/update/${id}`, {
+        axios.patch(`/reseller/cart/update/${id}`, {
             quantity: this.value,
             id: id
           })
           .then(function (response) {
             //console.log(response);
-            window.location.href = '/cart'
+            window.location.href = '/reseller/cart'
           })
           .catch(function (error) {
             console.log(error);
@@ -111,6 +111,6 @@
  })
     })();
 </script>
+<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 
-<script src="{{asset('js/app.js')}}"></script>
 @endsection

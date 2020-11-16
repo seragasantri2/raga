@@ -32,7 +32,7 @@
             <td>Rp. {{number_format($product->harga,0,',','.')}}</td>
             <td>{{$product->stok}}</td>
             <td class="icon ml-auto">
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#update{{$product->id}}"><i class="fas fa-edit"></i></a>
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#produk{{$product->id}}"><i class="fas fa-edit"></i></a>
             </td>
             <td class="ml-auto">
             <form action="/product/delete/{{$product->id}}" method="post">
@@ -82,6 +82,16 @@
                     @if ($errors->has('harga'))
                         <span class="help-block">
                         <strong>{{ $errors->first('harga') }}</strong>
+                        </span>
+                    @endif
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">harga reseller</label>
+                    <input type="number" name="harga_reseller" required="required" class="form-control" >
+                    @if ($errors->has('harga_reseller'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('harga_reseller') }}</strong>
                         </span>
                     @endif
                   </div>
@@ -192,7 +202,7 @@
 @foreach($products as $row)
 
 <!-- Modal -->
-<div class="modal fade" id="update{{$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="produk{{$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -223,6 +233,16 @@
                     @if ($errors->has('harga'))
                         <span class="help-block">
                         <strong>{{ $errors->first('harga') }}</strong>
+                        </span>
+                    @endif
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">harga reseller</label>
+                    <input type="number" name="harga_reseller" value="{{$row->harga_reseller}}" required="required" class="form-control" >
+                    @if ($errors->has('harga_reseller'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('harga_reseller') }}</strong>
                         </span>
                     @endif
                   </div>

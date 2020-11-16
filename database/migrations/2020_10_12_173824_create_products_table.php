@@ -20,11 +20,12 @@ class CreateProductsTable extends Migration
             $table->string('nama');
             $table->text('deskripsi');
             $table->integer('harga');
+            $table->integer('harga_reseller');
             $table->integer('stok');
             $table->string('image');
-            $table->string('berat');
-            $table->string('panjang');
-            $table->string('lebar');
+            $table->integer('berat');
+            $table->integer('panjang');
+            $table->integer('lebar');
             $table->string('tinggi');
             $table->timestamps();
         });

@@ -47,16 +47,23 @@ Route::delete('/category/delete/{id}','CategoryController@cdelete')->name('delet
 Route::get('/jadwal','ProductController@jadwal')->middleware('auth');
  
 //Reseller
-Route::get('/reseller','ResellerController@index')->name('reseller');
-Route::get('/reseller/product','ResellerController@product');
-Route::patch('/reseller/product/{id}','ResellerController@update');
-Route::get('/reseller/user','ResellerController@user');
-Route::patch('/reseller/user/{id}','ResellerController@updateUser');
-Route::get('/reseller/jadwal','ResellerController@promo');
+Route::get('/reseller','ResellerController@index');
+Route::get('/reseller/detail/{id}','ResellerController@detail');
+
+Route::get('/reseller/blog','ResellerController@blog')->name('blog');
+Route::get('/users/kontak','ResellerController@kontak')->name('kontak');
+Route::get('/users/pusatbantuan','ResellerController@pusatbantuan')->name('pusatbantuan');
+route::get('/reseller/category/{id}','ResellerController@category');
+route::get('/reseller/kategori/{id}','WelcomeController@kategori');
+Route::get('/reseller/cart','ResellerController@cart');
+route::post('/reseller/cart/store','ResellerController@store');
+Route::delete('/reseller/cart/remove/{id}','ResellerController@removecart' );
+route::patch('/reseller/cart/update/{id}','ResellerController@update');
 
  
 
 // Users
+Route::get('/profil/{id}','UserController@profil')->name('profil.admin');
 Route::get('/user','UserController@index')->name('user')->middleware('auth');
 Route::patch('/admin/user/update/{id}','UserController@update');
 Route::delete('/user/delete/{id}','UserController@delete')->name('delete-user')->middleware('auth');

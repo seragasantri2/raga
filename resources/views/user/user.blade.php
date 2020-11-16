@@ -42,7 +42,7 @@
     <div class="row mx-auto">
     @foreach($products as $produk)
       <div class="card mr-2 ml-2" style="width: 16rem;">
-      <img src="{{asset('storage/images/products/'.$produk->image)}}" class="card-img-top" width="250px" height="250px">
+      <img src="{{asset('gambar_produk/'.$produk->image)}}" class="card-img-top" width="250px" height="250px">
       <div class="card-body bg-light">
         <h5 class="card-title">{{$produk->nama}}</h5>
         <p class="card-text">{{$produk->stok}} Pcs</p>

@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.reseller')
 @section('content')
 <br>
 <br>
@@ -9,7 +9,7 @@
     <ul class="list-group list-group-flush p-2 pt-4">
       <li class="list-group-item bg-warning"><i class="fas fa-list"></i>  KATEGORI PRODUK</li>
       @foreach($category as $c)
-      <li class="list-group-item"> <a href="/category/{{$c->id}}" class="text-dark"><i class="fas fa-angle-right"></i> {{$c->nama}}</a></li>
+      <li class="list-group-item"> <a href="/reseller/category/{{$c->id}}" class="text-dark"><i class="fas fa-angle-right"></i> {{$c->nama}}</a></li>
       @endforeach
     </ul>
   </div>
@@ -53,8 +53,12 @@
         <td>: {{$product->stok}}</td>
       </tr>
       <tr>
-        <th>Harga</th>
+        <th>Harga Normal</th>
         <td>: <b>Rp. {{number_format($product->harga,0,',','.')}}</b></td>
+      </tr>
+      <tr>
+        <th>Harga Reseller</th>
+        <td>: <b>Rp. {{number_format($product->harga_reseller,0,',','.')}}</b></td>
       </tr>
     </table>
           <strong>Deskripsi :</strong> 
@@ -63,7 +67,7 @@
             
         </tr>
     <div class="modal-footer">
-    <form action="/cart/store" method="POST">
+    <form action="/reseller/cart/store" method="POST">
         @csrf
         <input type="hidden" value="{{$product->id}}" name="produk_id">
         <button type="submit" class="btn btn-warning mt-3"><b><i class="fas fa-cart-plus"></i> Add</b></button>

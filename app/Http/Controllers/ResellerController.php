@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Category;
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class ResellerController extends Controller
 {
@@ -14,83 +17,83 @@ class ResellerController extends Controller
         $this->middleware(['auth','Reseller']);
     }
     
-    public function index(Request $request)
+    public function index(request $request, $id=null)
     {
-        $users = DB::table('users')
-                    ->select(DB::raw('COUNT(id) as total_user'))
-                    ->where('role_id','=','3')
-                    ->first();
-        $reseller = DB::table('users')
-                    ->select(DB::raw('COUNT(id) as total_reseller'))
-                    ->where('role_id','=','2')
-                    ->first(); 
+        $category  = category::all();
+        $products = Product::where('nama','LIKE','%'.$request->search.'%')->paginate(12);
+        return view('reseller.dashboard', compact('products','category','id'));
+    }
 
-        $admin = DB::table('users')
-                    ->select(DB::raw('COUNT(id) as total_admin'))
-                    ->where('role_id','=','1')
-                    ->first();            
+    public function detail($id)
+    {
+        $category  = category::all();
+        $product = Product::findORFail($id);
+        return view('reseller.detail', compact('product','category'));
+    }
+
+    public function blog()
+    {
+        $artikel = Artikel::all();
+        return view('reseller.blog', compact('artikel'));
         
-                    $data = array(
-                        'users'  => $users,
-                        'reseller' => $reseller,
-                        'admin'  => $admin,   
-                    );                   
-        $products = Product::where('nama','LIKE','%'.$request->search.'%')->paginate(1);
-        return view('reseller.dashboard',  compact('products'),$data);
     }
-
-    public function product()
+    
+    public function kategori($id)
     {
-        $products = Product::all();
-        return view('reseller.product', compact('products'));
-        // dd($products);
+        $kategori  = KategoriArtikel::all();
+        $artikel = Artikel::where('kategori_id',$id)->get();
+        return view('reseller.blog', compact('kategori', 'artikel','id'));
     }
 
+    public function kontak()
+    {
+        return view('reseller.kontak');
+    }
+ 
+    public function pusatbantuan()
+    {
+        return view('reseller.pusatbantuan');
+    }
+
+    public function category($id)
+    {
+        $category  = category::all();
+        $products = Product::where('category_id',$id)->paginate(6);
+        return view('reseller.dashboard', compact('category', 'products','id'));
+    }
+
+    public function cart()
+    {
+        $cart = cart::where('user_id', Auth::user()->id)->get();
+        return view('reseller.cart',compact('cart'));
+    }
+    public function store(request $request)
+    {
+        $duplicate = cart::where('produk_id', $request->produk_id)->first();
+        if ($duplicate) {
+            return redirect('/reseller/cart')->with('error','Barang Sudah Ada Pada Cart');
+        }
+        Cart::create([
+            'user_id'       => auth::user()->id,
+            'produk_id'    => $request->produk_id,
+            'qty'           =>  1
+        ]);
+
+        return redirect('/reseller/cart')->with('success', 'Barang Berhasil Ditambahkan');
+    }
     public function update(Request $request, $id)
     {
-        $product = product::find($id)->update([
-            'category_id'   => $request->category_id,
-            'nama' => $request->nama,
-            'deskripsi' => $request->deskripsi,
-            'harga' => $request->harga,
-            'stok'  => $request->stok,
-        
-             
+        Cart::where('id',$id)->update([
+            'qty'   => $request->quantity
         ]);
-      return redirect()->back();
-     
-    } 
-
-
-    public function user()
-    {
-        $users  = User::where('role_id','=','3')->get();
-        return view('reseller.user', compact('users'));
+        return response()->json([
+            'succes' => true
+        ]);
     }
 
-
-
-    public function updateUser(Request $request, $id)
+    public function removecart($id)
     {
-        User::find($id)->update([
-            'first_name'    => $request->first_name,
-            'last_name'     => $request->last_name,
-            'email'         => $request->email,
-            'no_telpon'     => $request->no_telpon,
-            'password'      => Hash::make($request->password),
-            'alamat'        => $request->alamat,
-            'role_id'       =>  $request->role_id
-        ]); 
+        cart::destroy($id);
         return redirect()->back();
     }
-
-    public function promo() 
-    {
-        return view('reseller.jadwal');
-    }
-
-   
-     
-
- 
 }

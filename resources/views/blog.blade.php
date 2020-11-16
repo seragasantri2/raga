@@ -19,7 +19,7 @@
  <div class="row mx-auto">
   @foreach($artikel as $art)
     <div class="col-sm-3 bg-light mt-3 ml-5 mr-4" style="height:16cm;">
-      <img src="{{asset('storage/images/artikel/'.$art->image)}}" class="mt-3"  width="250px" height="250px">
+      <img src="{{asset('gambar_artikel/'.$art->image)}}" class="mt-3"  width="250px" height="250px">
       <h3 class="mt-3">{{substr($art->judul, 0, 20)}}....</h3>
       <p>{{$art->created_at->toFormattedDateString()}}</p>
       <p>{!! substr($art->isi, 0, 100) !!}....</p>

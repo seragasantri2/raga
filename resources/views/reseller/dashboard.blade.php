@@ -1,46 +1,65 @@
 @extends('layouts.reseller')
 @section('content')
 
-  <link rel="stylesheet" href="{{asset('css/user.css')}}">  
-
-    <div class="col-md p-5 pt-2">
-    <h3><i class="fas fa-tachometer-alt"></i> DASHBOARD </h3><hr>
+<div class="row mt-5 no-gutters">
+<div class="col-md-2 bg-light">
     
-    <div class="row text-white">
-    @foreach($products as $produk)
-          <div class="card bg-info ml-5 mt-5" style="width: 18rem;">
-          <div class="card-body">
-            <div class="card-body-icon">
-              <i class="fas fa-shopping-basket mr-2 ml-5"></i>
-              <i class="fas fa-shopping-basket"></i>
-            </div>  
-            
-            <h5 class="card-title">Jumlah Produk</h5>
-            <div class="display-4">{{$produk->count()}}</div>
-            <a href="/product"><p class="card-text text-white">Lihat Detail <i class=" fas fa-angle-double-right"></i></p></a>
-          </div>
+    <ul class="list-group list-group-flush p-2 pt-4">
+      <li class="list-group-item bg-warning"><i class="fas fa-list"></i>  KATEGORI PRODUK</li>
+      @foreach($category as $c)
+      <li class="list-group-item"> <a href="/reseller/category/{{$c->id}}" class="text-dark"><i class="fas fa-angle-right"></i> {{$c->nama}}</a></li>
       @endforeach
+    </ul>
+
+  </div>
+ 
+
+<div class="col-md-10">
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{asset('image/produk/slide1.jpg')}}" class="d-block w-100" alt="...">
         </div>
-     
-        @foreach($users as $user)
-        <div class="card bg-success ml-5 mt-5" style="width: 18rem;">
-          <div class="card-body">
-            <div class="card-body-icon">
-              <i class="fas fa-user mr-2"></i>
-              <i class="fas fa-user ml-3 mr-2"></i>
-            </div>
-            <h5 class="card-title">Jumlah User</h5>
-            <div class="display-4">{{ $users->total_user }}</div>
-            <a href=""><p class="card-text text-white">Lihat Detail <i class=" fas fa-angle-double-right"></i></p></a>
-          </div>
+        <div class="carousel-item">
+          <img src="{{asset('image/produk/slide2.jpg')}}" class="d-block w-100" alt="...">
         </div>
-        
+        <div class="carousel-item">
+          <img src="{{ asset('image/produk/slide3.jpg')}}" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <h4 class="text-center font-weight-bold m-4">PRODUK TERBARU</h4>
+
+    <div class="row mx-auto">
+    @foreach($products as $produk)
+      <div class="card mr-2 ml-2" style="width: 16rem;">
+      <img src="{{asset('gambar_produk/'.$produk->image)}}" class="card-img-top" width="250px" height="250px">
+      <div class="card-body bg-light">
+        <h5 class="card-title">{{$produk->nama}}</h5>
+        <p class="card-text">{{$produk->stok}} Pcs</p>
+        <br>
+        <i class="fas fa-star text-warning"></i>
+        <i class="fas fa-star text-warning"></i>
+        <i class="fas fa-star text-warning"></i>
+        <i class="fas fa-star text-warning"></i>
+        <i class="fas fa-star-half-alt text-warning"></i>
+        <i clas="far fa-star text-warning"></i><br>
+        <a href="/reseller/detail/{{$produk->id}}" class="btn btn-primary" >Detail</a>
+        <a href="#" class="btn btn-danger">Rp.{{number_format($produk->harga_reseller,0,',','.')}}</a>
+      </div>
+</div>
+@endforeach
 
 
-    @endforeach
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-      <script type="text/javascript" src="{{ asset('js/user.js')}}"></script>
-    @endsection
+
+@endsection

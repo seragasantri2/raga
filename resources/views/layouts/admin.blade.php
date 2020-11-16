@@ -34,7 +34,7 @@
       </div>
       <!-- Example split danger button -->
       <div class="btn-group">
-        <button type="button" class="btn btn-warning"><i class="fas fa-user mr-2"></i><b>{{Auth::User()->getFullname()}}</b></button>
+        <a  href="/profil/{{Auth::user()->id}}" class="btn btn-warning"><i class="fas fa-user mr-2"></i><b>{{Auth::User()->getFullname()}}</b></a>
         <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
@@ -61,7 +61,7 @@
         <li class="nav-item">
           <!-- Example split danger button -->
           <div class="btn-group">
-            <button type="button" class="btn btn-dark"> <i class="fas fa-book-open mr-2"></i> Produk</button>
+            <a class="btn btn-dark" href="/product"> <i class="fas fa-book-open mr-2"></i> Produk</a>
             <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </button>
@@ -76,12 +76,12 @@
         <li class="nav-item">
           <!-- Example split danger button -->
           <div class="btn-group">
-            <button type="button" class="btn btn-dark"> <i class="fas fa-user mr-2"></i> Daftar User</button>
+            <a  class="btn btn-dark" href="/user"> <i class="fas fa-user mr-2"></i> Daftar User</a>
             <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item"href="/user">User Biasa</a>
+              <a class="dropdown-item" href="/user">User Biasa</a>
               <a class="dropdown-item" href="/daftarreseller">Reseller</a>
               <a class="dropdown-item" href="/daftaradmin">Admin</a>
               
@@ -98,12 +98,12 @@
         <li class="nav-item">
           <!-- Example split danger button -->
           <div class="btn-group">
-            <button type="button" class="btn btn-dark"> <i class="fas fa-book-open mr-2"></i> Artikel</button>
+            <a href="/admin/artikel" class="btn btn-dark"> <i class="fas fa-book-open mr-2"></i> Artikel</a>
             <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu"> 
-              <a class="dropdown-item"href="/admin/kategoriartikel">Kategori Artikel</a>
+              <a class="dropdown-item" href="/admin/kategoriartikel">Kategori Artikel</a>
               <a class="dropdown-item" href="/admin/Tartikel">Tag Artikel</a>
               <a class="dropdown-item" href="/admin/artikel">POS Artikel</a>
               

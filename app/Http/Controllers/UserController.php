@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Artikel;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\KategoriArtikel;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,13 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware(['auth','admin']);
+    }
+
+    public function profil()
+    {
+        $profil =   User::all();
+        $role   = Role::all();
+        return view('admin.profil', compact('profil','role'));
     }
     
     public function index()
@@ -112,10 +120,10 @@ class UserController extends Controller
         $input = $request->all();
         if($request->hasFile('image'))
         {
-            $destination_path = 'public/images/artikel';
+            $destination_path = 'gambar_artikel';
             $image = $request->file('image');
             $image_name = $image->getClientOriginalName();
-            $path = $request->file('image')->storeAs($destination_path,$image_name);
+            $path = $request->file('image')->move($destination_path,$image_name);
 
             $input['image'] =   $image_name;
         }
