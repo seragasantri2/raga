@@ -15,7 +15,7 @@ class User
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    {  
         if (Auth::check() && Auth::user()->role_id == '3') {
             return $next($request);
         }

@@ -15,16 +15,19 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware(['auth','admin']);
-    }
+    
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }  
+
     public function index(Request $request)
     {
         $users = DB::table('users')

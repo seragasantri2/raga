@@ -24,7 +24,7 @@ route::get('/tampilblog/{id}','WelcomeController@tampilblog');
 
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
    
 
 //produk
@@ -47,54 +47,70 @@ Route::delete('/category/delete/{id}','CategoryController@cdelete')->name('delet
 Route::get('/jadwal','ProductController@jadwal')->middleware('auth');
  
 //Reseller
-Route::get('/reseller','ResellerController@index');
-Route::get('/reseller/detail/{id}','ResellerController@detail');
+Route::group(['middleware' => ['Reseller']], function () {
+    //
+    
+    Route::get('/reseller','ResellerController@index')->name('reseller');
+    Route::get('/reseller/detail/{id}','ResellerController@detail');
+    
+    Route::get('/reseller/blog','ResellerController@blog')->name('blog');
+    Route::get('/users/kontak','ResellerController@kontak')->name('kontak');
+    Route::get('/users/pusatbantuan','ResellerController@pusatbantuan')->name('pusatbantuan');
+    route::get('/reseller/category/{id}','ResellerController@category');
+    route::get('/reseller/kategori/{id}','WelcomeController@kategori');
+    Route::get('/reseller/cart','ResellerController@cart');
+    route::post('/reseller/cart/store','ResellerController@store');
+    Route::delete('/reseller/cart/remove/{id}','ResellerController@removecart' );
+    route::patch('/reseller/cart/update/{id}','ResellerController@update');
+});
 
-Route::get('/reseller/blog','ResellerController@blog')->name('blog');
-Route::get('/users/kontak','ResellerController@kontak')->name('kontak');
-Route::get('/users/pusatbantuan','ResellerController@pusatbantuan')->name('pusatbantuan');
-route::get('/reseller/category/{id}','ResellerController@category');
-route::get('/reseller/kategori/{id}','WelcomeController@kategori');
-Route::get('/reseller/cart','ResellerController@cart');
-route::post('/reseller/cart/store','ResellerController@store');
-Route::delete('/reseller/cart/remove/{id}','ResellerController@removecart' );
-route::patch('/reseller/cart/update/{id}','ResellerController@update');
 
  
 
 // Users
-Route::get('/profil/{id}','UserController@profil')->name('profil.admin');
-Route::get('/user','UserController@index')->name('user')->middleware('auth');
-Route::patch('/admin/user/update/{id}','UserController@update');
-Route::delete('/user/delete/{id}','UserController@delete')->name('delete-user')->middleware('auth');
-Route::get('/daftaradmin','UserController@admin')->middleware('auth');
-Route::patch('/admin/update/{id}','UserController@updateUser');
-Route::post('/admin/add','UserController@createAdmin');
-Route::get('/daftarreseller','UserController@reseller')->middleware('auth');
-Route::patch('/daftarreseller/update/{id}','UserController@update');
-Route::post('/reseller/add','UserController@create');
-Route::get('/admin/kategoriartikel','UserController@kategoriartikel')->middleware('auth');
-Route::post('/admin/tambahKartikel','UserController@tambahKategori')->middleware('auth');
-Route::get('/admin/Tartikel','UserController@tag')->middleware('auth');
-Route::post('/admin/tambahTartikel','UserController@tambahTag')->middleware('auth');
-Route::get('/admin/artikel','UserController@artikel')->middleware('auth');
-Route::post('/admin/tambahartikel','UserController@tambahArtikel')->middleware('auth');
-Route::get('/admin/tambartikel','UserController@tambartikel')->middleware('auth');
-Route::get('/admin/artikel/{id}','UserController@perbaruiKategori')->middleware('auth');
-Route::patch('/artikel/update/{id}','UserController@updateartikel');
+Route::group(['middleware' => ['admin']], function () {
+    //
+    
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/profil/{id}','UserController@profil')->name('profil.admin');
+    Route::get('/user','UserController@index')->name('user')->middleware('auth');
+    Route::patch('/admin/user/update/{id}','UserController@update');
+    Route::delete('/user/delete/{id}','UserController@delete')->name('delete-user')->middleware('auth');
+    Route::get('/daftaradmin','UserController@admin')->middleware('auth');
+    Route::patch('/admin/update/{id}','UserController@updateUser');
+    Route::post('/admin/add','UserController@createAdmin');
+    Route::get('/daftarreseller','UserController@reseller')->middleware('auth');
+    Route::patch('/daftarreseller/update/{id}','UserController@update');
+    Route::post('/reseller/add','UserController@create');
+    Route::get('/admin/kategoriartikel','UserController@kategoriartikel')->middleware('auth');
+    Route::post('/admin/tambahKartikel','UserController@tambahKategori')->middleware('auth');
+    Route::get('/admin/Tartikel','UserController@tag')->middleware('auth');
+    Route::post('/admin/tambahTartikel','UserController@tambahTag')->middleware('auth');
+    Route::get('/admin/artikel','UserController@artikel')->middleware('auth');
+    Route::post('/admin/tambahartikel','UserController@tambahArtikel')->middleware('auth');
+    Route::get('/admin/tambartikel','UserController@tambartikel')->middleware('auth');
+    Route::get('/admin/artikel/{id}','UserController@perbaruiKategori')->middleware('auth');
+    Route::patch('/artikel/update/{id}','UserController@updateartikel');
+});
+
 
 
 
 
 //Userbiasa
-Route::get('/users','UserbiasaController@index');
-Route::get('/detail/{id}','UserbiasaController@detail');
-Route::get('/users/blog','UserbiasaController@blog')->name('blog');
-Route::get('/users/kontak','UserbiasaController@kontak')->name('kontak');
-Route::get('/users/pusatbantuan','UserbiasaController@pusatbantuan')->name('pusatbantuan');
-route::get('/category/{id}','UserbiasaController@category');
-route::get('/users/kategori/{id}','WelcomeController@kategori');
-Route::get('/cart','UserbiasaController@cart');
-route::post('/cart/store','UserbiasaController@store');
-Route::delete('/cart/remove/{id}','UserbiasaController@removecart' );
-route::patch('/cart/update/{id}','UserbiasaController@updatecart');
+Route::group(['middleware' => ['User']], function () {
+    //
+    
+    Route::get('/users','UserbiasaController@index');
+    Route::get('/detail/{id}','UserbiasaController@detail');
+    Route::get('/users/blog','UserbiasaController@blog')->name('blog');
+    Route::get('/users/kontak','UserbiasaController@kontak')->name('kontak');
+    Route::get('/users/pusatbantuan','UserbiasaController@pusatbantuan')->name('pusatbantuan');
+    route::get('/category/{id}','UserbiasaController@category');
+    route::get('/users/kategori/{id}','WelcomeController@kategori');
+    Route::get('/cart','UserbiasaController@cart');
+    route::post('/cart/store','UserbiasaController@store');
+    Route::delete('/cart/remove/{id}','UserbiasaController@removecart' );
+    route::patch('/cart/update/{id}','UserbiasaController@updatecart');
+});
+

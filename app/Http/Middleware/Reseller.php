@@ -16,8 +16,8 @@ class Reseller
     public function handle($request, Closure $next)
     {
         if (Auth::check() && Auth::user()->role_id == '2') {
-            return $next($request);
-        }
-        abort(403);
+        return $next($request);
+    }
+    abort(403);
     }
 }

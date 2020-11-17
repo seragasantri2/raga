@@ -11,10 +11,7 @@ use Auth;
 
 class UserbiasaController extends Controller
 {
-      public function __construct()
-    {
-        $this->middleware(['auth','user']);
-    }
+    
     public function index(request $request, $id=null)
     {
         $category  = category::all();

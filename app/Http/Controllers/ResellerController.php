@@ -12,10 +12,8 @@ use Auth;
 
 class ResellerController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth','Reseller']);
-    }
+ 
+   
     
     public function index(request $request, $id=null)
     {
