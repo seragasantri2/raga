@@ -8,15 +8,15 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\KategoriArtikel;
 use App\Models\Tag;
-use App\Models\Product;
-use Auth;
 use DB;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
-class UserController extends Controller
+class SuperController extends Controller
 {
   
     
-    public function home(Request $request)
+    public function dashboard(Request $request)
     {
         $users = DB::table('users')
                     ->select(DB::raw('COUNT(id) as total_user'))
@@ -38,23 +38,22 @@ class UserController extends Controller
                         'admin'  => $admin,   
                     );                   
         $products = Product::where('nama','LIKE','%'.$request->search.'%')->paginate(1);
-        return view('admin.dashboard',  compact('products'),$data);
+        return view('super.dashboard',  compact('products'),$data);
         // dd($users);
         
     }
-
 
     public function profil()
     {
         $profil =   User::all();
         $role   = Role::all();
-        return view('admin.profil', compact('profil','role'));
+        return view('super.profil', compact('profil','role'));
     }
     
     public function index()
     {
         $users = User::where('role_id','=','3')->get();
-        return view('admin.daftaruser', compact('users'));
+        return view('super.daftaruser', compact('users'));
     }
  
     
@@ -82,7 +81,7 @@ class UserController extends Controller
     public function admin()
     {
         $admin = User::where('role_id','=','1')->get();
-        return view('admin.daftaradmin', compact('admin'));
+        return view('super.daftaradmin', compact('admin'));
     }
 
     public function createAdmin(Request $request)
@@ -132,7 +131,7 @@ class UserController extends Controller
         $artikel = Artikel::all();
         $kategori = KategoriArtikel::all();
         $tags = Tag::all();
-        return view('admin.blog.index', compact('artikel','kategori','tags'));
+        return view('super.blog.index', compact('artikel','kategori','tags'));
     }
 
     public function tambartikel()
@@ -140,7 +139,7 @@ class UserController extends Controller
         $artikel = Artikel::all();
         $kategori = KategoriArtikel::all();
         $tags = Tag::all();
-        return view('admin.blog.tambah', compact('artikel','kategori','tags'));
+        return view('super.blog.tambah', compact('artikel','kategori','tags'));
     }
 
     public function tambahArtikel(Request $request)
@@ -157,56 +156,160 @@ class UserController extends Controller
         }
         
         Artikel::create($input);
-        return redirect('/admin/artikel');
+        return redirect('/artikel');
+    }
+
+    public function perbaruiartikel(Request $request)
+    {
+        $artikel = Artikel::where('id', $request->id)->first();
+        $kategori = KategoriArtikel::all();
+        $tags = Tag::all();
+        return view('super.blog.perbarui', compact('artikel','kategori','tags'));
+    }
+
+    public function updateartikel(Request $request, $id)
+    {
+        $input = $request->all();
+        if($request->hasFile('image'))
+        {
+            $destination_path = 'gambar_artikel';
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('image')->move($destination_path,$image_name);
+
+            $input['image'] =   $image_name;
+        }
+        
+        Artikel::find($id)->update($input);
+        return redirect('/artikel');
+    }
+
+    public function deleteartikel($id)
+    {
+        Artikel::destroy($id);
+        return redirect('/artikel');
+
     }
 
     public function kategoriartikel()
     {
         $kategori = KategoriArtikel::all();
-        return view('admin.blog.kategori', compact('kategori'));
+        return view('super.blog.kategori', compact('kategori'));
     }
 
     public function tambahKategori(Request $request)
     {
         KategoriArtikel::create(['nama' => $request->nama]);
-        return redirect('/admin/kategoriartikel');
+        return redirect('/kategoriartikel');
     }
 
-    public function perbaruiKategori(Request $request)
+    public function perbaruiKategori(Request $request, $id)
     {
-        $artikel = Artikel::where('id', $request->id)->first();
-        $kategori = KategoriArtikel::all();
-        $tags = Tag::all();
-        return view('admin.blog.perbarui', compact('artikel','kategori','tags'));
+        KategoriArtikel::find($id)->update(['nama' => $request->nama]);
+        return redirect('/kategoriartikel');
     }
 
-
-    public function updateartikel(Request $request, $id)
+    public function deletekategori($id)
     {
-        Artikel::find($id)->update([
-            'judul'    => $request->judul,
-            'kategori_id'     => $request->kategori_id,
-            'tag_id'         => $request->tag_id,
-            'isi'     => $request->isi,
-        ]); 
-        return redirect('/admin/artikel');
+        KategoriArtikel::destroy($id);
+        return redirect('/kategoriartikel');
+
     }
+
+
 
     public function tag()
     {
         $tag = Tag::all();
-        return view('admin.blog.tag',compact('tag')); 
+        return view('super.blog.tag',compact('tag')); 
     }
 
     public function tambahTag(Request $request)
     {
         Tag::Create(['nama'  => $request->nama]);
-        return redirect('/admin/Tartikel');
+        return redirect('/Tartikel');
+    }
+
+    
+    public function updatetag(Request $request, $id)
+    {
+        Tag::find($id)->update([
+            'nama'  => $request->nama       
+        ]);
+        return redirect('/Tartikel');
+    
+    }
+
+    public function deletetag($id)
+    {
+        Tag::destroy($id);
+        return back();
+
+    }
+
+    public function produk(request $request)
+    {
+        Product::where('nama', $request->search)->paginate(10);
+        $category   = Category::all();
+        $products = Product::all();
+        
+        return view('super.product.product',compact('products', 'category'));
+    }
+
+    public function createproduk()
+    {
+       
+        return view('super.product.create');
+    }   
+
+    public function createData(Request $request)
+    {
+        $input = $request->all();
+        if($request->hasFile('image'))
+        {
+            $destination_path = 'gambar_produk';
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('image')->move($destination_path,$image_name);
+
+            $input['image'] =   $image_name;
+        }
+        
+        Product::create($input);
+        return redirect("/product");
+    }
+
+    public function updateproduk(Request $request, $id)
+    {
+        $product = product::find($id)->update([
+            'category_id'       => $request->category_id,
+            'nama'              => $request->nama,
+            'deskripsi'         => $request->deskripsi,
+            'harga'             => $request->harga,
+            'harga_reseller'    => $request->harga_reseller,
+            'stok'              => $request->stok,
+            'panjang'           => $request->panjang,
+            'berat'             => $request->berat,
+            'tinggi'            => $request->tinggi,
+            'lebar '            => $request->lebar
+         
+             
+        ]);
+      return redirect()->back();
+    
+    }
+
+    public function deleteproduk($id)
+    {
+        Product::destroy($id);
+        return back();
+
     }
 
     public function jadwal()
     {
-        return view('product.jadwal');
+        return view('super.product.jadwal');
     }
+
     
 }

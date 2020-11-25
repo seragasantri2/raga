@@ -25,15 +25,6 @@ route::get('/tampilblog/{id}','WelcomeController@tampilblog');
 
 Auth::routes();
 
-   
-
-//produk
-Route::get('/product','ProductController@index')->name('produk');
-Route::post('/product/add','ProductController@createData')->middleware('auth');
-Route::get('/product','ProductController@index')->middleware('auth');
-Route::get('/product/create','ProductController@create')->name('create-product')->middleware('auth');
-Route::patch('/product/update/{id}','ProductController@update');
-Route::delete('/product/delete/{id}','ProductController@delete')->name('delete-product')->middleware('auth');
 
 
 
@@ -44,10 +35,10 @@ Route::patch('/category/update/{id}','CategoryController@update');
 Route::delete('/category/delete/{id}','CategoryController@cdelete')->name('delete-categori')->middleware('auth');
 
 //jadwal
-Route::get('/jadwal','ProductController@jadwal')->middleware('auth');
+
  
 //Reseller
-Route::group(['middleware' => ['Reseller']], function () {
+Route::group(['middleware' => ['reseller']], function () {
     //
     
     Route::get('/reseller','ResellerController@index')->name('reseller');
@@ -65,23 +56,65 @@ Route::group(['middleware' => ['Reseller']], function () {
 });
 
 
+// SuperAdmin
+Route::group(['middleware' => ['superadmin']], function () {
+    //
+    
+    Route::get('/home', 'SuperController@dashboard');
+    Route::get('/profil/{id}','SuperController@profil')->name('profil.admin');
+    Route::get('/user','SuperController@index')->name('user')->middleware('auth');
+    Route::patch('/user/update/{id}','SuperController@update');
+    Route::delete('/user/delete/{id}','SuperController@delete')->name('delete-user')->middleware('auth');
+    Route::get('/daftaradmin','SuperController@admin')->middleware('auth');
+    Route::patch('/admin/update/{id}','SuperController@updateUser');
+    Route::post('/admin/add','SuperController@createAdmin');
+    Route::get('/daftarreseller','SuperController@reseller')->middleware('auth');
+    Route::patch('/daftarreseller/update/{id}','superController@update');
+    Route::post('/reseller/add','SuperController@create');
+
+    Route::get('/kategoriartikel','SuperController@kategoriartikel')->middleware('auth');
+    Route::post('/tambahKartikel','SuperController@tambahKategori')->middleware('auth');
+    Route::patch('/updateKartikel/{id}','SuperController@perbaruiKategori')->middleware('auth');
+    Route::delete('/deleteKartikel/{id}','SuperController@deletekategori')->middleware('auth');
+    Route::get('/Tartikel','SuperController@tag')->middleware('auth');
+    Route::post('/tambahTartikel','SuperController@tambahTag')->middleware('auth');
+    Route::patch('/Tartikel/update/{id}','SuperController@updatetag')->middleware('auth');
+    Route::delete('/Tartikel/delete/{id}','SuperController@deletetag')->middleware('auth');
+    Route::get('/artikel','SuperController@artikel')->middleware('auth');
+    Route::post('/tambahartikel','SuperController@tambahArtikel')->middleware('auth');
+    Route::get('/tambartikel','SuperController@tambartikel')->middleware('auth');
+    Route::get('/artikel/{id}','SuperController@perbaruiartikel')->middleware('auth');
+    Route::patch('/update/{id}','SuperController@updateartikel');
+    Route::delete('/artikel/delete/{id}','SuperController@deleteartikel')->middleware('auth');
+
+    Route::get('/product','SuperController@produk');
+    Route::post('/product/add','SuperController@createData');
+    Route::get('/product','SuperController@produk');
+    Route::get('/product/create','SuperController@createproduk');
+    Route::patch('/product/update/{id}','SuperController@updateproduk');
+    Route::delete('/product/delete/{id}','SuperController@deleteproduk');
+
+    Route::get('/jadwal','SuperController@jadwal');
+
+});
+
  
 
 // Users
 Route::group(['middleware' => ['admin']], function () {
     //
     
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/profil/{id}','UserController@profil')->name('profil.admin');
-    Route::get('/user','UserController@index')->name('user')->middleware('auth');
+    Route::get('/admins', 'UserController@home');
+    Route::get('/admin/profil/{id}','UserController@profil')->name('profil.admin');
+    Route::get('/admin/user','UserController@index')->name('user')->middleware('auth');
     Route::patch('/admin/user/update/{id}','UserController@update');
-    Route::delete('/user/delete/{id}','UserController@delete')->name('delete-user')->middleware('auth');
-    Route::get('/daftaradmin','UserController@admin')->middleware('auth');
-    Route::patch('/admin/update/{id}','UserController@updateUser');
-    Route::post('/admin/add','UserController@createAdmin');
-    Route::get('/daftarreseller','UserController@reseller')->middleware('auth');
-    Route::patch('/daftarreseller/update/{id}','UserController@update');
-    Route::post('/reseller/add','UserController@create');
+    Route::delete('/admin/user/delete/{id}','UserController@delete')->name('delete-user')->middleware('auth');
+    Route::get('/admin/daftaradmin','UserController@admin')->middleware('auth');
+    Route::patch('/admin/admin/update/{id}','UserController@updateUser');
+    Route::post('/admin/admin/add','UserController@createAdmin');
+    Route::get('/admin/daftarreseller','UserController@reseller')->middleware('auth');
+    Route::patch('/admin/daftarreseller/update/{id}','UserController@update');
+    Route::post('/admin/reseller/add','UserController@create');
     Route::get('/admin/kategoriartikel','UserController@kategoriartikel')->middleware('auth');
     Route::post('/admin/tambahKartikel','UserController@tambahKategori')->middleware('auth');
     Route::get('/admin/Tartikel','UserController@tag')->middleware('auth');
@@ -90,15 +123,23 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/tambahartikel','UserController@tambahArtikel')->middleware('auth');
     Route::get('/admin/tambartikel','UserController@tambartikel')->middleware('auth');
     Route::get('/admin/artikel/{id}','UserController@perbaruiKategori')->middleware('auth');
-    Route::patch('/artikel/update/{id}','UserController@updateartikel');
+    Route::patch('/admin/artikel/update/{id}','UserController@updateartikel');
+
+    Route::get('/admin/product','ProductController@index');
+    Route::post('/admin/product/add','ProductController@createData');
+    Route::get('/admin/product','ProductController@index')->middleware('auth');
+    Route::get('/admin/product/create','ProductController@create');
+    Route::patch('/admin/product/update/{id}','ProductController@update');
+    Route::delete('/admin/product/delete/{id}','ProductController@delete');
+
+    Route::get('/admin/jadwal','UserController@jadwal');
 });
 
 
 
 
-
 //Userbiasa
-Route::group(['middleware' => ['User']], function () {
+Route::group(['middleware' => ['auth']], function () {
     //
     
     Route::get('/users','UserbiasaController@index');

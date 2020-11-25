@@ -18,7 +18,7 @@
   
 
     <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
-      <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>TokoKami</b></a>
+      <a class="navbar-brand" href="#">SELAMAT DATANG SUPER ADMIN | <b>TokoKami</b></a>
       
         <form class="form-inline my-2 my-lg-0 ml-auto">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -55,19 +55,19 @@
       <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
         <ul class="nav flex-column ml-3 mb-5">
         <li class="nav-item">
-          <a class="nav-link active text-white" href="/admins"> <i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a><hr class="bg-secondary">
+          <a class="nav-link active text-white" href="/home"> <i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a><hr class="bg-secondary">
         </li>
 
         <li class="nav-item">
           <!-- Example split danger button -->
           <div class="btn-group">
-            <a class="btn btn-dark" href="/admin/product"> <i class="fas fa-book-open mr-2"></i> Produk</a>
+            <a class="btn btn-dark" href="/product"> <i class="fas fa-book-open mr-2"></i> Produk</a>
             <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="/admin/product">Daftar Produk</a>
-              <a class="dropdown-item" href="/admin/category">Daftar Category</a>              
+              <a class="dropdown-item" href="/product">Daftar Produk</a>
+              <a class="dropdown-item" href="/category">Daftar Category</a>              
             </div>
           </div>
           <hr class="bg-secondary">
@@ -76,14 +76,14 @@
         <li class="nav-item">
           <!-- Example split danger button -->
           <div class="btn-group">
-            <a  class="btn btn-dark" href="/admin/user"> <i class="fas fa-user mr-2"></i> Daftar User</a>
+            <a  class="btn btn-dark" href="/user"> <i class="fas fa-user mr-2"></i> Daftar User</a>
             <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="/admin/user">User Biasa</a>
-              <a class="dropdown-item" href="/admin/daftarreseller">Reseller</a>
-              <a class="dropdown-item" href="/admin/daftaradmin">Admin</a>
+              <a class="dropdown-item" href="/user">User Biasa</a>
+              <a class="dropdown-item" href="/daftarreseller">Reseller</a>
+              <a class="dropdown-item" href="/daftaradmin">Admin</a>
               
             </div>
           </div>
@@ -91,21 +91,21 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link text-white" href="/admin/jadwal"> <i class="fas fa-calendar-alt mr-2"></i> Jadwal Promo</a><hr class="bg-secondary">
+          <a class="nav-link text-white" href="/jadwal"> <i class="fas fa-calendar-alt mr-2"></i> Jadwal Promo</a><hr class="bg-secondary">
         </li>
              
   
         <li class="nav-item">
           <!-- Example split danger button -->
           <div class="btn-group">
-            <a href="/admin/artikel" class="btn btn-dark"> <i class="fas fa-book-open mr-2"></i> Artikel</a>
+            <a href="/artikel" class="btn btn-dark"> <i class="fas fa-book-open mr-2"></i> Artikel</a>
             <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu"> 
-              <a class="dropdown-item" href="/admin/kategoriartikel">Kategori Artikel</a>
-              <a class="dropdown-item" href="/admin/Tartikel">Tag Artikel</a>
-              <a class="dropdown-item" href="/admin/artikel">POS Artikel</a>
+              <a class="dropdown-item" href="/kategoriartikel">Kategori Artikel</a>
+              <a class="dropdown-item" href="/Tartikel">Tag Artikel</a>
+              <a class="dropdown-item" href="/artikel">POS Artikel</a>
               
             </div>
           </div>

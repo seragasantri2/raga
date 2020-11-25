@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.super')
 
 @section('tittle','Product')
 
@@ -33,6 +33,14 @@
             <td>{{$product->stok}}</td>
             <td class="icon ml-auto">
             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#produk{{$product->id}}"><i class="fas fa-edit"></i></a>
+            </td>
+            <td class="ml-auto">
+            <form action="/product/delete/{{$product->id}}" method="post">
+            @csrf
+            @method('delete')
+                <button class="btn btn-danger "><i class="fas fa-trash-alt"></i></button>
+            </form>
+             <!-- <a class="btn btn-danger btn-delete" href="/product/delete/{{$product->id}}">@method('detele')<i class="fas fa-trash"></i></a> -->
             </td>
         </tr>
     @endforeach

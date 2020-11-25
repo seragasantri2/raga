@@ -26,14 +26,6 @@
                 <td>
                 <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ResellerModal{{$adm->id}}"> <i class="fas fa-edit  p-2" data-toggle="tooltip" title="edit"></i></a>
                </td>
-                <td class="ml-auto">
-                <form action="/user/delete/{{$adm->id}}" method="post">
-                @csrf
-                @method('delete')
-                    <button class="btn btn-danger "><i class="fas fa-trash-alt"></i></button>
-                </form>
-                
-                </td>
               </tr>
             @endforeach
             </tbody>

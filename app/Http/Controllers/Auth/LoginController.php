@@ -34,13 +34,16 @@ class LoginController extends Controller
 
         switch($role) {
             case '1':
-                return '/home';
+                return '/admins';
             break;
             case '2':
                 return '/reseller';
             break;
             case '3':
                 return '/users';
+            break;
+            case '4':
+                return '/home';
             break;
         }
     }

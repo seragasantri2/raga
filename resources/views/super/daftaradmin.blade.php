@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.super')
 @section('content')
 <div class="col-md-10 p-5 pt-2">
         <h3><i class="fas fa-user mr-2"></i> DAFTAR ADMIN </h3><hr>
@@ -26,6 +26,13 @@
                 <td>
                 <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#AdminUpdate{{$adm->id}}" > <i class="fas fa-edit  p-2" data-toggle="tooltip" title="edit"></i></a>
                </td>
+                <td>
+                  <form action="/user/delete/{{$adm->id}}" method="post">
+                  @csrf
+                  @method('delete')
+                      <button class="btn btn-danger "><i class="fas fa-trash-alt"></i></button>
+                  </form>
+                </td>
               </tr>
             @endforeach
             </tbody>
@@ -123,7 +130,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form class="" action="/admin/user/update/{{$row->id}}" method="post">
+        <form class="" action="/user/update/{{$row->id}}" method="post">
             @csrf
             @method('patch')
 

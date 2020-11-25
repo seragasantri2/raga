@@ -40,5 +40,15 @@ class UserSeeder extends Seeder
             'no_telpon'     =>  '0813',
             'role_id'          =>  '3' 
         ]);
+
+        DB::table('users')->insert([
+            'first_name'    =>  'Super',
+            'last_name'    =>  'Admin',
+            'email'         => 'super@admin.com',
+            'password'      =>  Hash::make('superadmin'),
+            'alamat'        =>  'Indonesia',
+            'no_telpon'     =>  '0813',
+            'role_id'          =>  '4' 
+        ]);
     }
 }
