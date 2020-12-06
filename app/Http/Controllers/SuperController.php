@@ -11,6 +11,8 @@ use App\Models\Tag;
 use DB;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\KatKategori;
+use App\Models\SubKategori;
 use Illuminate\Support\Facades\Hash;
 class SuperController extends Controller
 {
@@ -302,6 +304,72 @@ class SuperController extends Controller
     public function deleteproduk($id)
     {
         Product::destroy($id);
+        return back();
+
+    }
+
+
+    public function indexkategori()
+    {
+        $category = Category::all();
+        $main = SubKategori::all();
+        $sub    = KatKategori::all();
+        return view('super.category', compact('category','main','sub'));
+    }
+
+    public function categoryproduk(request $request)
+    {
+        $category = Category::create([
+            'nama'  => $request->nama,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function maincategoryproduk(request $request)
+    {
+        $category = Category::all();
+        $main = SubKategori::create([
+            'category_id' => $request->category_id,
+            'nama'  => $request->nama,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function mainkat(Request $request)
+    {
+        $type   = $request->type;
+        if ($type == '')
+        {
+
+        }
+    }
+
+    public function subcategoryproduk(request $request)
+    {
+        $sub = KatKategori::create([
+            'category_id' => $request->category_id,
+            'sub_id' => $request->sub_id,
+            'nama'  => $request->nama,
+        ]);
+
+        return redirect()->back();
+    }
+                
+
+    
+    public function updatekategoriproduk(request $request, $id)
+    {
+        $category = Category::find($id)->update([
+            'nama'  => $request->nama,
+        ]);
+        return redirect()->back();
+    }
+
+    public function kategoridelete($id)
+    {
+        category::destroy($id);
         return back();
 
     }

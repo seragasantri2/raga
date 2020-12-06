@@ -12,19 +12,23 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'nama'  => 'Kaos Distro' 
+            'nama'  => 'Kaos' ,
+            'parent_id' => '1'
         ]);
 
         DB::table('categories')->insert([
-            'nama'  => 'Kemeja Pria' 
+            'nama'  => 'Kemeja' ,
+            'parent_id' => '2'
         ]);
 
         DB::table('categories')->insert([
-            'nama'  => 'Baju Kaos' 
+            'nama'  => 'Lepis',
+            'parent_id' => '3' 
         ]);
 
         DB::table('categories')->insert([
-            'nama'  => 'Pakaian' 
+            'nama'  => 'Pakaian',
+            'parent_id' => '1'
         ]);
     }
 }

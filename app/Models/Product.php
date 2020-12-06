@@ -10,9 +10,6 @@ class Product extends Model
         'category_id','nama','deskripsi','harga','harga_reseller','stok','image','berat','panjang','lebar','tinggi'
     ]; 
 
- public function Category()
- {
-     return $this->belongsto('App\Models\Category');
- }
+
     
 }

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.super')
 
 @section('tittle','Product')
 @section('content')
@@ -6,7 +6,7 @@
 <div class="col-md p-5 pt-2">
     <h3><i class="fas fa-book-open mr-2"></i> DAFTAR CATEGORY</h3><hr>
     
-    <a class="btn btn-primary mb-3" data-toggle="modal" data-target="#KategoriModal" ><i class="fas fa-plus-square mr-2"> Tambah Kategori</i></a>
+    <a class="btn btn-primary mb-3" data-toggle="modal" data-target="#KategoriModal" > Tambah Kategori</a>
     
   
     <table class="table table-striped table-bordered">

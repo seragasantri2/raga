@@ -29,10 +29,6 @@ Auth::routes();
 
 
 //Category
-Route::get('/category','CategoryController@index');
-Route::post('/category/add','CategoryController@category')->middleware('auth');
-Route::patch('/category/update/{id}','CategoryController@update');
-Route::delete('/category/delete/{id}','CategoryController@cdelete')->name('delete-categori')->middleware('auth');
 
 //jadwal
 
@@ -94,6 +90,13 @@ Route::group(['middleware' => ['superadmin']], function () {
     Route::patch('/product/update/{id}','SuperController@updateproduk');
     Route::delete('/product/delete/{id}','SuperController@deleteproduk');
 
+    Route::get('/category','SuperController@indexkategori');
+    Route::post('/category/add','SuperController@categoryproduk')->middleware('auth');
+    Route::post('/maincategory/add','SuperController@maincategoryproduk')->middleware('auth');
+    Route::post('/subcategory/add','SuperController@subcategoryproduk')->middleware('auth');
+    Route::patch('/category/update/{id}','SuperController@updatekategoriproduk');
+    Route::delete('/category/delete/{id}','SuperController@kategoridelete')->name('deletecategori')->middleware('auth');
+
     Route::get('/jadwal','SuperController@jadwal');
 
 });
@@ -131,6 +134,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/product/create','ProductController@create');
     Route::patch('/admin/product/update/{id}','ProductController@update');
     Route::delete('/admin/product/delete/{id}','ProductController@delete');
+
+    Route::get('/admin/category','CategoryController@index');
+    Route::post('/admin/category/add','CategoryController@category')->middleware('auth');
+    Route::patch('/admin/category/update/{id}','CategoryController@update');
+    Route::delete('/admin/category/delete/{id}','CategoryController@cdelete')->name('delete-categori')->middleware('auth');
+    
 
     Route::get('/admin/jadwal','UserController@jadwal');
 });
