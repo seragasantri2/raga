@@ -97,6 +97,11 @@ Route::group(['middleware' => ['superadmin']], function () {
     Route::patch('/category/update/{id}','SuperController@updatekategoriproduk');
     Route::delete('/category/delete/{id}','SuperController@kategoridelete')->name('deletecategori')->middleware('auth');
 
+    Route::get('/mainkat/{id}','SuperController@mainkat');
+    Route::get('/subkat/{id}','SuperController@subkat');
+
+    
+
     Route::get('/jadwal','SuperController@jadwal');
 
 });

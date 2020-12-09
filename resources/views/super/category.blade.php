@@ -26,10 +26,8 @@
     @foreach ($category as $product)
         <tr>
             <th scope="row">{{$loop->iteration}}</th>
-            <td> <a href="/category/{{$product->id}}">{{$product->nama}}</a></td>
-            <td> <a href="#">
-                <iframe src="" frameborder="0" width="10"></iframe>
-            </a></td>
+            <td > {{$product->nama}}</td>
+            <td id="mainkat"> </td>
             <td>SUM KATEGORI</td>
            
             <td class="icon ml-auto">
@@ -43,8 +41,8 @@
             </form>
              <!-- <a class="btn btn-danger btn-delete" href="/product/delete/{{$product->id}}">@method('detele')<i class="fas fa-trash"></i></a> -->
             </td>
-        </tr>
     @endforeach
+        </tr>
     </tbody>
     </table>
     
@@ -164,8 +162,8 @@
                   <div class="form-group">
                     <label for="">Main Kategori</label>
                     
-                    <select name="category_id" class="form-control" id="main">
-                     <option value=""></option>
+                    <select name="sub_id" class="form-control" id="main">
+                     
                     </select>
                     
                   </div>  
@@ -233,7 +231,26 @@
 
 @section('js')
   <script>
-     $
+     $('#grd').change(function(){
+       var val = $('#grd').val();
+       $('#main').html('');
+       $.ajax({
+          url: '/mainkat/' + val,
+          type: "get",
+          dataType: 'json',
+          
+          success: function(data) {
+            $.each(data, function( index, value) {
+                // console.log(value);
+
+                $('#main').append('<option value="'+value.id+'">'+value.nama+'</option>')
+            });
+          },
+        });
+     });
+
+
+    
   </script>
 @endsection
 @endsection

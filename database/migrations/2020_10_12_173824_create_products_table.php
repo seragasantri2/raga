@@ -17,16 +17,20 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->bigInteger('main_id')->unsigned();
+            $table->foreign('main_id')->references('id')->on('sub_kategoris');
+            $table->bigInteger('sub_id')->unsigned();
+            $table->foreign('sub_id')->references('id')->on('kat_kategoris');
             $table->string('nama');
-            $table->text('deskripsi');
+            $table->text('deskripsi')->nullable();
             $table->integer('harga');
             $table->integer('harga_reseller');
             $table->integer('stok');
-            $table->string('image');
-            $table->integer('berat');
-            $table->integer('panjang');
-            $table->integer('lebar');
-            $table->string('tinggi');
+            $table->string('image')->nullable();
+            $table->integer('berat')->nullable();
+            $table->integer('panjang')->nullable();
+            $table->integer('lebar')->nullable();
+            $table->string('tinggi')->nullable();
             $table->timestamps();
         });
     }

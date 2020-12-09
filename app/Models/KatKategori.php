@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class KatKategori extends Model
 {
-    protected $fillabel = ['category_id','sub_id','nama'];
+    protected $fillable = ['category_id','sub_id','nama'];
 
     public function Category()
     {

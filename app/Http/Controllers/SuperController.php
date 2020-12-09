@@ -253,9 +253,11 @@ class SuperController extends Controller
     {
         Product::where('nama', $request->search)->paginate(10);
         $category   = Category::all();
+        $main = SubKategori::all();
+        $sub    = KatKategori::all();
         $products = Product::all();
         
-        return view('super.product.product',compact('products', 'category'));
+        return view('super.product.product',compact('products', 'category','main','sub'));
     }
 
     public function createproduk()
@@ -285,6 +287,8 @@ class SuperController extends Controller
     {
         $product = product::find($id)->update([
             'category_id'       => $request->category_id,
+            'main_id'           => $request->main_id,
+            'sub_id'            => $request->sub_id,
             'nama'              => $request->nama,
             'deskripsi'         => $request->deskripsi,
             'harga'             => $request->harga,
@@ -337,26 +341,35 @@ class SuperController extends Controller
         return redirect()->back();
     }
 
-    public function mainkat(Request $request)
-    {
-        $type   = $request->type;
-        if ($type == '')
-        {
-
-        }
-    }
-
+    
     public function subcategoryproduk(request $request)
     {
         $sub = KatKategori::create([
             'category_id' => $request->category_id,
             'sub_id' => $request->sub_id,
             'nama'  => $request->nama,
-        ]);
-
-        return redirect()->back();
-    }
-                
+            ]);
+            
+            return redirect()->back();
+        }
+        
+             
+          public function mainkat($id)
+          {
+             
+              $category  = category::all();
+              $main = SubKategori::where('category_id',$id)->get();
+              return response()->json($main, 200);
+              
+          }
+      
+          public function subkat($id)
+          {
+             
+              $sub = KatKategori::where('sub_id',$id)->get();
+              return response()->json($sub, 200);
+              
+          }
 
     
     public function updatekategoriproduk(request $request, $id)

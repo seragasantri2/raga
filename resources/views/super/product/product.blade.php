@@ -109,16 +109,25 @@
                   <div class="form-group">
                     <label for="">Kategori</label>
                     
-                    <select name="category_id" class="form-control">
+                    <select name="category_id" class="form-control" id="grd">
                     @foreach($category as $c)
                       <option value="{{$c->id}}">{{$c->nama}}</option>
                       @endforeach 
                     </select>
-                    
-                  </div>   
-                           
 
-                  
+                    <select name="main_id" class="form-control"  id="main">
+                    @foreach($main as $c)
+                      <option value="{{$c->id}}">{{$c->nama}}</option>
+                      @endforeach 
+                    </select>
+
+                    <!-- <select name="main_id" class="form-control" id="main">
+                    </select> -->
+
+                    <select name="sub_id" class="form-control" id="subkat">
+                    </select>
+                  </div>                  
+
                   <div class="col-sm form-group form-inline " style="text-align:left;">
                     <ul>
                         <label>Berat </label>
@@ -158,7 +167,6 @@
                     </ul>
                   </div>
 
-
                   <div class="form-group">
                     <label for="content">Deskripsi</label>
                     <textarea name="deskripsi"  cols="5" rows="5" id="textcontent" cols="30" rows="10" class="form-control ckeditor" id="ckedtor"></textarea>
@@ -168,7 +176,6 @@
                         </span>
                     @endif
                 </div>
-
                 
                   <div class="form-group">
                     <label for="exampleFormControlFile1">Gambar Produk</label>
@@ -180,7 +187,6 @@
                     @endif
                   </div>
                 
-
                 </div>
                 <!-- /.card-body -->
                 <div class="col-sm-12 text-right">
@@ -256,16 +262,27 @@
                         </span>
                     @endif
                   </div>
+
                   <div class="form-group">
                     <label for="">Kategori</label>
                     
-                    <select name="category_id" class="form-control">
-                    
-                      <option value="{{$row->category->id}}">{{$row->category->nama}}</option>
-                  
+                    <select name="category_id" class="form-control" id="grd">
+                   
+                      <option value="{{$row->Category->id}}">{{$row->Category->nama}}</option>
+                      
                     </select>
+
+                    <select name="main_id" class="form-control"  id="main">
                     
-                  </div>             
+                    <option value="0">--Pilih yang Atas Terlebih dahulu--</option>
+                    </select>
+
+                    <!-- <select name="main_id" class="form-control" id="main">
+                    </select> -->
+
+                    <select name="sub_id" class="form-control" id="subkat">
+                    </select>
+                  </div>       
 
                   
                   <div class="col-sm form-group form-inline " style="text-align:left;">
@@ -344,5 +361,49 @@
 <!-- Button trigger modal -->
 
 <!-- Button trigger modal -->
+
+@section('js')
+  <script>
+     $('#grd').change(function(){
+       var val = $('#grd').val();
+       $('#main').html('');
+       $.ajax({
+          url: '/mainkat/' + val,
+          type: "get",
+          dataType: 'json',
+          
+          success: function(data) {
+            $.each(data, function( index, value) {
+                // console.log(value);
+
+                $('#main').append('<option value="'+value.id+'">'+value.nama+'</option>')
+            });
+          },
+        });
+     });
+    
+
+     $('#main').change(function(){
+       var val = $('#main').val();
+       $('#subkat').html('');
+       $.ajax({
+          url: '/subkat/' + val,
+          type: "get",
+          dataType: 'json',
+          
+          
+          success: function(data) {
+            $.each(data, function( index, value) {
+                console.log(value);
+
+                $('#subkat').append('<option value="'+value.id+'">'+value.nama+'</option>')
+            });
+          },
+        });
+     });
+
+    
+  </script>
+@endsection
 
 @endsection
